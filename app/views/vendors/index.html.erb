@@ -1,0 +1,28 @@
+<div class="page-header">
+  <h1>
+    Vendors
+    <a href="/vendors/new" class="btn btn-lg btn-success">New Vendor</a>
+  </h1>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped table-hover">
+      <tr>
+        <th>Vendor name</th>
+        <th>Actions</th>
+      </tr>
+
+      <% @vendors.each do |vendor| %>
+      <tr>
+        <td><%= vendor.vendor_name %></td>
+        <td>
+          <a href="/vendors/<%= vendor.id %>" class="btn btn-primary">Show</a>
+          <a href="/vendors/<%= vendor.id %>/edit" class="btn btn-warning">Edit</a>
+          <a href="/delete_vendor/<%= vendor.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
