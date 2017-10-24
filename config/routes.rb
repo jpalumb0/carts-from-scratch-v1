@@ -1,5 +1,22 @@
 Rails.application.routes.draw do
   
+  # Routes for the Cart resource:
+  # CREATE
+  get "/carts/new", :controller => "carts", :action => "new"
+  post "/create_cart", :controller => "carts", :action => "create"
+
+  # READ
+  get "/carts", :controller => "carts", :action => "index"
+  get "/carts/:id", :controller => "carts", :action => "show"
+
+  # UPDATE
+  get "/carts/:id/edit", :controller => "carts", :action => "edit"
+  post "/update_cart/:id", :controller => "carts", :action => "update"
+
+  # DELETE
+  get "/delete_cart/:id", :controller => "carts", :action => "destroy"
+  #------------------------------
+
   root 'items#index'
 
   
@@ -56,10 +73,12 @@ Rails.application.routes.draw do
 
   devise_for :users
   
-  mount WebGit::Engine, at: "/rails/git"
+  #mount WebGit::Engine, at: "/rails/git"
   
   get "/users", :controller => "users", :action => "index"
   get "/users/:id", :controller => "users", :action => "show"
+  
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

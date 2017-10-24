@@ -21,10 +21,9 @@
       <!-- Label and input for follower_id -->
       <div class="form-group">
         <label for="follower_id" class="control-label">
-          Follower
         </label>
 
-        <input type="text" id="follower_id" name="follower_id" placeholder="Follower" class="form-control" value="<%= @follow.follower_id %>">
+        <input type="hidden" id="follower_id" name="follower_id" placeholder="Follower" class="form-control" value="<%= current_user.id %>">
       </div>
 
       <!-- Label and input for following_id -->

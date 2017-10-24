@@ -35,7 +35,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 group :development, :test do
   gem 'dotenv-rails'
   gem 'pry-rails'
-  gem 'web_git', github: 'firstdraft/web_git'
+  gem "web_git", git: "https://github.com/firstdraft/web_git"
 end
 
 group :development do
@@ -47,6 +47,7 @@ group :development do
   gem 'letter_opener'
   gem 'meta_request'
   gem 'wdm', platforms: [:mingw, :mswin, :x64_mingw]
+  gem 'dotenv-rails'
 end
 
 group :test do
@@ -60,3 +61,4 @@ gem 'devise', github: 'plataformatec/devise'
 
 
 gem "starter_generators", :git => "https://github.com/raghubetina/starter_generators"
+gem "httparty"
