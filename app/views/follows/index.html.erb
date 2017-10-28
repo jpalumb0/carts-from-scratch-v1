@@ -1,30 +1,99 @@
-<div class="page-header">
+<!--<div class="page-header">
   <h1>
     Follows
     <a href="/follows/new" class="btn btn-lg btn-success">New Follow</a>
   </h1>
-</div>
+</div> -->
 
+
+<!-- Begin user search, consider Ransack-style search instead.  Then put follow button next to each search result. -->
 <div class="row">
-  <div class="col-md-12">
-    <table class="table table-striped table-hover">
-      <tr>
-        <th>Follower</th>
-        <th>Following</th>
-        <th>Actions</th>
-      </tr>
+  <div class="col-md-10 col-md-offset-1">
+  
+    <form class="form-horizontal" action="/create_follow" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
-      <% @follows.each do |follow| %>
-      <tr>
-        <td><%= follow.follower_id %></td>
-        <td><%= follow.following_id %></td>
-        <td>
-          <a href="/follows/<%= follow.id %>" class="btn btn-primary">Show</a>
-          <a href="/follows/<%= follow.id %>/edit" class="btn btn-warning">Edit</a>
-          <a href="/delete_follow/<%= follow.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
-        </td>
-      </tr>
-      <% end %>
-    </table>
+      <!-- Label and input for follower_id -->
+      <div class="form-group">
+        <label for="follower_id" class="control-label">
+          <h4>Find a friend </h4>
+        </label>
+
+        <input type="hidden" id="follower_id" name="follower_id" placeholder="Follower" class="form-control" value="<%= current_user.id %>">
+      </div>
+
+      <!-- Label and input for following_id -->
+      <div class="form-group">
+      
+          <div class="input-group">
+            <label for="following_id" class="control-label">
+            </label>
+            
+            
+            <!-- Still hoping to turn this into an autocomplete search-->
+            
+            <%= select_tag("following_id", options_from_collection_for_select(User.all, :id, :email,4), :class => "form-control") %>
+    <!--
+            <input list="user_emails" id="following_id" name="following_id" placeholder="Find a friend" class="form-control">
+            <datalist id="user_emails">
+              <% @users.each do |user| %>
+                <option value="<%= user.id %>"><%= user.email %></option>
+              <% end %>
+            </datalist>
+    -->
+            <span class="input-group-btn">
+              <button class="btn btn-success" type="submit">
+                Follow
+              </button>
+            </span>
+          </div>
+   
+      </div>
+            
+            
+      
+      
+    </form>
+  </div>
+
+</div>
+<div class="row">
+  <i class="fa fa-address-book fa-lg" aria-hidden="true"></i>
+</div>
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
+    <div class="panel with-nav-tabs panel-default">
+      <div class="panel-heading">
+        <strong>Following</strong>
+      </div>
+      <div class="panel-body">
+        <div class="table-responsive">
+          <ul class="list-unstyled">
+            <!--
+            <tr>
+              <th>Following</th>
+              <th>Actions</th>
+            </tr>
+            -->
+            <% @follows.each do |follow| %>
+            <li>
+              <div class="row" style="margin-bottom: 5px">
+                <div class="col-md-4 col-md-offset-1">
+                  <a href="/users/<%= @users.find(follow.following_id).id %>" class="btn btn-link btn-block"><%= @users.find(follow.following_id).email %></a>
+                </div>
+                <div class="col-md-2 col-md-offset-1">
+                  <a href="/users/<%= @users.find(follow.following_id).id %>" class="btn btn-primary">See Cart</a>
+                </div>
+                <div class="col-md-2 col-md-offset-1">
+                  <a href="/delete_follow/<%= follow.id %>" class="btn btn-danger" rel="nofollow">Unfollow</a>
+                </div>
+              </div>
+            </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

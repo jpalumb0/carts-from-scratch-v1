@@ -62,3 +62,7 @@ gem 'devise', github: 'plataformatec/devise'
 
 gem "starter_generators", :git => "https://github.com/raghubetina/starter_generators"
 gem "httparty"
+
+gem 'rails-jquery-autocomplete'
+gem 'jquery-ui-rails'
+gem 'ransack'

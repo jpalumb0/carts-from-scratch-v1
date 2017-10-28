@@ -1,0 +1,46 @@
+<!-- Validation failure messages -->
+<% if @cart.errors.any? %>
+  <% @cart.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Add Cart</h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/create_cart" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for user_id -->
+      <div class="form-group">
+        <label for="user_id" class="control-label">
+
+        </label>
+
+        <input type="hidden" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= current_user.id %>">
+      </div>
+
+      <!-- Label and input for cart_name -->
+      <div class="form-group">
+        <label for="cart_name" class="control-label">
+          Cart name
+        </label>
+
+        <input type="text" id="cart_name" name="cart_name" placeholder="Cart name" autocomplete="false" class="form-control" value="<%= @cart.cart_name %>">
+      </div>
+
+      <button class="btn btn-success">
+        Create Cart
+      </button>
+      or
+      <a href="/users/<%= current_user.id %>">Cancel</a>
+    </form>
+  </div>
+</div>

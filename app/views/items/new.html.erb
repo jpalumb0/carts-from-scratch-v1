@@ -86,18 +86,17 @@
 
       <!-- Label and input for user_id -->
       <div class="form-group">
-        <label for="user_id" class="control-label">
-
+        <label for="cart_id" class="control-label">
         </label>
 
-        <input type="hidden" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= current_user.id %>">
+        <input type="hidden" id="cart_id" name="cart_id" placeholder="Cart" class="form-control" value="<%= params[:cart_id] %>">
       </div>
 
       <button class="btn btn-success">
         Create Item
       </button>
       or
-      <a href="/items">Cancel</a>
+      <a href="/users/<% current_user.id %>">Cancel</a>
     </form>
   </div>
 </div>

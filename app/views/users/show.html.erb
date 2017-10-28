@@ -1,0 +1,89 @@
+
+<div class="page-header">
+  
+  <h1>
+    <% if @user.id==current_user.id %>
+      Your Carts
+    <% else %>
+      <%= @user.email %>'s Carts
+    <% end %>
+    
+  </h1>
+</div>
+<div class="col-md-10 col-md-offset-1">
+<div class="panel with-nav-tabs panel-default">
+  <div class="panel-heading">
+          <ul class="nav nav-pills">
+            <% @user.carts.each do |cart| %>
+              <li class=<%= "active" if @user.carts.first == cart %>><a href="#tab<%= cart.id %>default" data-toggle="pill"><%= cart.cart_name %></a></li>
+            <% end %>
+            <!-- <div class="pull-right"> -->
+              <li class=<%= "active" if @user.carts.first == nil %>><a href="/carts/new"><span><i class="fa fa-plus fa-lg" aria-hidden="true"></i>  New Cart</i></span></a></li>
+            <!-- </div> -->
+          </ul>
+  </div>
+
+  <div class="panel-body">
+      <div class="tab-content">
+          <% @user.carts.each do |cart| %>
+                  <div class="tab-pane fade <%= "in active" if @user.carts.first==cart %>" id="tab<%= cart.id %>default">
+                      
+                      <div class="table-responsive">
+                      <table class="table table-striped table-hover">
+                          <tr>
+                            <th>Quantity wanted</th>
+                            <th>Item name</th>
+                            
+                            <th>Item url</th>
+                            <!--<th>Vendor</th>
+                            <th>Image url</th>
+                    -->
+                            <th>Actions</th>
+                          </tr>
+                          <!-- Need to update and move current_user check outward, as it will also determine presence of 'new cart' and 'new item' -->
+                            <% if @user.id == current_user.id %>  
+                              <% cart.items.each do |item| %>
+                                  <tr>
+                                    <td><%= item.quantity_wanted %></td>
+                                    <td><a href=<%= item.item_url %>><%= item.item_name %></a></td>
+                                    
+                                    <td style="text-overflow:ellipsis"><a href=<%= item.item_url %>><%= item.item_url %></a></td>
+                                    <!--<td>na</td>
+                                    <td>na</td>
+                            -->
+                                    <td>
+                                      <!-- <a href="/items/<%= item.id %>" class="btn btn-primary">Details</a> -->
+                                      <span>
+                                        <a href="/items/<%= item.id %>/edit" class="btn btn-warning">Edit</a>
+                                        <a href="/delete_item/<%= item.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+                                      </span>
+                                    </td>
+                                  </tr>
+                              <% end %>
+                            <% else %> 
+                              <% cart.items.each do |item| %>
+                                  <tr>
+                                    <td><%= item.quantity_wanted %></td>
+                                    <td><a href=<%= item.item_url %>><%= item.item_name %></a></td>
+
+                                    <td style="text-overflow:ellipsis"><a href=<%= item.item_url %>><%= item.item_url %></a></td>
+                                    <!--<td>na</td>
+                                    <td>na</td>
+                            -->
+                                    <td>
+                                      <!-- <a href="/items/<%= item.id %>" class="btn btn-primary">Details</a> -->
+                                      <a href="/delete_item/<%= item.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+                                    </td>
+                                  </tr>
+                              <% end %>
+                             <% end %>
+                        </table>
+                      </div>
+                      <a href="/items/new?cart_id=<%= cart.id %>" class="btn btn-md btn-success btn-block"><span><i class="fa fa-plus" aria-hidden="true"></i>  Add Item</span></a>
+                  </div>
+            <% end %>
+          
+      </div>
+  </div>
+</div>
+</div>

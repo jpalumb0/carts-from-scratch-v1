@@ -49,12 +49,12 @@ class ItemsController < ApplicationController
     @item.item_url = params[:item_url]
     @item.vendor_id = "coming soon" #blank for now
     @item.image_url = "coming soon" #params[:image_url]
-    @item.user_id = params[:user_id]
+    @item.cart_id = params[:cart_id]
 
     save_status = @item.save
 
     if save_status == true
-      redirect_to("/items/#{@item.id}", :notice => "Item created successfully.")
+      redirect_to("/users/#{current_user.id}", :notice => "Item created successfully.")
     else
       render("items/new.html.erb")
     end
@@ -76,12 +76,12 @@ class ItemsController < ApplicationController
     @item.item_url = params[:item_url]
     @item.vendor_id = params[:vendor_id]
     @item.image_url = params[:image_url]
-    @item.user_id = params[:user_id]
+    @item.cart_id = params[:cart_id]
 
     save_status = @item.save
 
     if save_status == true
-      redirect_to("/items/#{@item.id}", :notice => "Item updated successfully.")
+      redirect_to("/users/#{current_user.id}", :notice => "Item updated successfully.")
     else
       render("items/edit.html.erb")
     end

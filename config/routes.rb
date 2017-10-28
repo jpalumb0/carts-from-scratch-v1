@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  root 'users#current_user_home'
+  
   # Routes for the Cart resource:
   # CREATE
   get "/carts/new", :controller => "carts", :action => "new"
@@ -17,7 +19,7 @@ Rails.application.routes.draw do
   get "/delete_cart/:id", :controller => "carts", :action => "destroy"
   #------------------------------
 
-  root 'items#index'
+  
 
   
   # Routes for the Follow resource:
@@ -78,6 +80,9 @@ Rails.application.routes.draw do
   get "/users", :controller => "users", :action => "index"
   get "/users/:id", :controller => "users", :action => "show"
   
+  resources :follows do
+    get :autocomplete_user_email, :on => :collection
+  end
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
