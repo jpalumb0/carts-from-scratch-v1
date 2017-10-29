@@ -1,0 +1,62 @@
+<!--<div class="page-header">
+  <h1>
+    Follows
+    <a href="/follows/new" class="btn btn-lg btn-success">New Follow</a>
+  </h1>
+</div> -->
+
+
+<!-- Begin user search, consider Ransack-style search instead.  Then put follow button next to each search result. -->
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
+    <%= search_form_for @q do |f| %>
+      <p class="lead">Find People:</p>
+    
+      <div class="form-group">
+        <%= f.label :following_email, "Email of person being followed" %>
+        <%= f.text_field :following_email, :class => "form-control", :placeholder => "Search for a User..." %>
+      </div>
+    
+      
+      <%= f.submit :class => "btn btn-primary btn-block" %>
+      
+      <a href="/movies" class="btn btn-default btn-block">Clear filters</a>
+    <% end %>
+    
+  </div>
+
+</div>
+<div class="row"></div>
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
+    <div class="panel with-nav-tabs panel-default">
+      <div class="panel-heading">
+        <strong>Following</strong>
+      </div>
+      <div class="panel-body">
+        <div class="table-responsive">
+          <ul class="list-unstyled">
+            <!--
+            <tr>
+              <th>Following</th>
+              <th>Actions</th>
+            </tr>
+            -->
+            <% @follows.each do |follow| %>
+            <li>
+              <div class="row">
+                <div class="col-md-6 col-md-offset-1">
+                  <a href="/users/<%= @users.find(follow.following_id).id %>" class="btn btn-primary btn-block"><%= @users.find(follow.following_id).email %></a>
+                </div>
+                <div class="col-md-2 col-md-offset-1">
+                  <a href="/delete_follow/<%= follow.id %>" class="btn btn-danger" rel="nofollow">Unfollow</a>
+                </div>
+              </div>
+            </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

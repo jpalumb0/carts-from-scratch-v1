@@ -10,28 +10,24 @@
     <table class="table table-striped table-hover">
       <tr>
         <th>Item name</th>
-        <th>Description</th>
         <th>Quantity wanted</th>
-        <th>Quantity received</th>
         <th>Item url</th>
         <th>Vendor</th>
         <th>Image url</th>
-        <th>User</th>
+
         <th>Actions</th>
       </tr>
 
       <% @items.each do |item| %>
       <tr>
-        <td><%= item.item_name %></td>
-        <td><%= item.description %></td>
+        <td><a href=<%= item.item_url %>><%= item.item_name %></a></td>
         <td><%= item.quantity_wanted %></td>
-        <td><%= item.quantity_received %></td>
-        <td><%= item.item_url %></td>
-        <td><%= item.vendor_id %></td>
-        <td><%= item.image_url %></td>
-        <td><%= item.user_id %></td>
+        <td><a href=<%= item.item_url %>><%= item.item_url %></a></td>
+        <td>na</td>
+        <td>na</td>
+
         <td>
-          <a href="/items/<%= item.id %>" class="btn btn-primary">Show</a>
+          <a href="/items/<%= item.id %>" class="btn btn-primary">Details</a>
           <a href="/items/<%= item.id %>/edit" class="btn btn-warning">Edit</a>
           <a href="/delete_item/<%= item.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
         </td>

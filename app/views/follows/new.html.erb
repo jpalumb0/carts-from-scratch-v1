@@ -21,10 +21,9 @@
       <!-- Label and input for follower_id -->
       <div class="form-group">
         <label for="follower_id" class="control-label">
-          Follower
         </label>
 
-        <input type="text" id="follower_id" name="follower_id" placeholder="Follower" class="form-control" value="<%= @follow.follower_id %>">
+        <input type="hidden" id="follower_id" name="follower_id" placeholder="Follower" class="form-control" value="<%= current_user.id %>">
       </div>
 
       <!-- Label and input for following_id -->
@@ -32,10 +31,21 @@
         <label for="following_id" class="control-label">
           Following
         </label>
-
-        <input type="text" id="following_id" name="following_id" placeholder="Following" class="form-control" value="<%= @follow.following_id %>">
+        
+        
+        <!-- Still hoping to turn this into an autocomplete search-->
+        <%= select_tag("following_id", options_from_collection_for_select(User.all, :id, :email), :class => "form-control") %>
+<!--
+        <input list="user_emails" id="following_id" name="following_id" placeholder="Find a friend" class="form-control">
+        <datalist id="user_emails">
+          <% @users.each do |user| %>
+            <option value="<%= user.id %>"><%= user.email %></option>
+          <% end %>
+        </datalist>
+-->
       </div>
-
+            
+            
       <button class="btn btn-success">
         Create Follow
       </button>
@@ -44,3 +54,4 @@
     </form>
   </div>
 </div>
+

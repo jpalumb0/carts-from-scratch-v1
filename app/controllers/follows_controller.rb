@@ -1,6 +1,10 @@
 class FollowsController < ApplicationController
+  
+  
+  
   def index
-    @follows = Follow.all
+    @follows = current_user.follows
+    @users = User.all
 
     render("follows/index.html.erb")
   end
@@ -13,6 +17,7 @@ class FollowsController < ApplicationController
 
   def new
     @follow = Follow.new
+    @users = User.all
 
     render("follows/new.html.erb")
   end
@@ -26,7 +31,7 @@ class FollowsController < ApplicationController
     save_status = @follow.save
 
     if save_status == true
-      redirect_to("/follows/#{@follow.id}", :notice => "Follow created successfully.")
+      redirect_to("/follows", :notice => "Follow created successfully.")
     else
       render("follows/new.html.erb")
     end
