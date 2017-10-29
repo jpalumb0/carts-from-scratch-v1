@@ -66,3 +66,4 @@ gem "httparty"
 gem 'rails-jquery-autocomplete'
 gem 'jquery-ui-rails'
 gem 'ransack'
+gem 'addressable'

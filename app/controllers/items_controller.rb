@@ -22,7 +22,11 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new
     
+    #require "addressable/uri"
     url = params[:item_url]
+    #uri = Addressable::URI.parse(url)
+    #url = uri.scheme + uri.host + uri.path
+
     page = HTTParty.get(url)
     doc = Nokogiri::HTML(page)
 =begin

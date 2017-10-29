@@ -299,6 +299,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  addressable
   annotate
   awesome_print
   better_errors
