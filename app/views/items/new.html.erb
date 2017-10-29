@@ -18,42 +18,6 @@
       <!-- Hidden input for authenticity token to protect from forgery -->
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
-      <!-- Label and input for item_name -->
-      <div class="form-group">
-        <label for="item_name" class="control-label">
-          Item name
-        </label>
-
-        <input type="text" id="item_name" name="item_name" placeholder="Item name" class="form-control" value="<%= @item.item_name %>">
-      </div>
-
-      <!-- Label and input for description -->
-      <div class="form-group">
-        <label for="description" class="control-label">
-          Description
-        </label>
-
-        <textarea id="description" name="description" placeholder="Description" class="form-control" rows="3"><%= @item.description %></textarea>
-      </div>
-
-      <!-- Label and input for quantity_wanted -->
-      <div class="form-group">
-        <label for="quantity_wanted" class="control-label">
-          Quantity wanted
-        </label>
-
-        <input type="text" id="quantity_wanted" name="quantity_wanted" placeholder="Quantity wanted" class="form-control" value="<%= @item.quantity_wanted %>">
-      </div>
-
-      <!-- Label and input for quantity_received -->
-      <div class="form-group">
-        <label for="quantity_received" class="control-label">
-          Quantity received
-        </label>
-
-        <input type="text" id="quantity_received" name="quantity_received" placeholder="Quantity received" class="form-control" value="<%= @item.quantity_received %>">
-      </div>
-
       <!-- Label and input for item_url -->
       <div class="form-group">
         <label for="item_url" class="control-label">
@@ -63,38 +27,76 @@
         <input type="text" id="item_url" name="item_url" placeholder="Item url" class="form-control" value="<%= @item.item_url %>">
       </div>
 
-      <!-- Label and input for vendor_id -->
+      
+      <!-- Label and input for item_name -->
       <div class="form-group">
-        <label for="vendor_id" class="control-label">
-          Vendor
+        <label for="item_name" class="control-label">
+       
         </label>
 
-        <input type="text" id="vendor_id" name="vendor_id" placeholder="Vendor" class="form-control" value="<%= @item.vendor_id %>">
+        <input type="hidden" id="item_name" name="item_name" placeholder="Item name" class="form-control" value="<%= @item.item_name %>">
+      </div>
+
+      <!-- Label and input for description -->
+      <!--
+      <div class="form-group">
+        <label for="description" class="control-label">
+          Description
+        </label>
+
+        <textarea id="description" name="description" placeholder="Description" class="form-control" rows="3"><%= @item.description %></textarea>
+      </div>
+      -->
+      <!-- Label and input for quantity_wanted -->
+      <div class="form-group">
+        <label for="quantity_wanted" class="control-label">
+          Quantity wanted
+        </label>
+
+        <input type="number" id="quantity_wanted" name="quantity_wanted" placeholder="Quantity wanted" class="form-control" value= "1">
+      </div>
+
+      <!-- Label and input for quantity_received (currently being used to hold Vendor name) -->
+      
+      <div class="form-group">
+        <label for="quantity_received" class="control-label">
+
+        </label>
+
+        <input type="hidden" id="quantity_received" name="quantity_received" placeholder="Quantity received" class="form-control" value="<%= @item.quantity_received %>">
+      </div>
+      
+      
+      <div class="form-group">
+        <label for="vendor_id" class="control-label">
+         
+        </label>
+
+        <input type="hidden" id="vendor_id" name="vendor_id" placeholder="Vendor" class="form-control" value="<%= @item.vendor_id %>">
       </div>
 
       <!-- Label and input for image_url -->
       <div class="form-group">
         <label for="image_url" class="control-label">
-          Image url
+    
         </label>
 
-        <input type="text" id="image_url" name="image_url" placeholder="Image url" class="form-control" value="<%= @item.image_url %>">
+        <input type="hidden" id="image_url" name="image_url" placeholder="Image url" class="form-control" value="<%= @item.image_url %>">
       </div>
 
       <!-- Label and input for user_id -->
       <div class="form-group">
-        <label for="user_id" class="control-label">
-          User
+        <label for="cart_id" class="control-label">
         </label>
 
-        <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @item.user_id %>">
+        <input type="hidden" id="cart_id" name="cart_id" placeholder="Cart" class="form-control" value="<%= params[:cart_id] %>">
       </div>
 
       <button class="btn btn-success">
         Create Item
       </button>
       or
-      <a href="/items">Cancel</a>
+      <a href="/users/<% current_user.id %>">Cancel</a>
     </form>
   </div>
 </div>

@@ -6,5 +6,7 @@ class User < ActiveRecord::Base
          
   has_many :follows, :foreign_key => "follower_id", :dependent => :destroy
   has_many :followeds, :class_name => "Follow", :foreign_key => "following_id", :dependent => :destroy
-  has_many :items, :dependent => :destroy
+  has_many :carts
+  
+  has_many :items, :through => :carts, :source => :items
 end

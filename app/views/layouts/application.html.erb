@@ -2,10 +2,16 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Workspace</title>
+  <title>Cart of Carts</title>
 
 
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <style>
+    .navbar-brand img {
+    max-height: 100%;
+  }  
+
+</style>
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
   <style>
@@ -35,23 +41,28 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a href="/" class="navbar-brand">Workspace</a>
+        <a href="/" class="navbar-brand"><span><img alt="Brand" src="http://sk.uploads.im/t/2PNEv.png"></span>  Cart of Carts</a>
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-          <li><a href="/follows">Follows</a></li>
-          <li><a href="/vendors">Vendors</a></li>
-          <li><a href="/items">Items</a></li>
-          <li><a href="/rails/git">Git</a></li>
+          <!-- <li><a href="/follows"><span><i class="fa fa-users fa-lg" aria-hidden="true"></i>  Follows</span></a></li>
+          <li><a href="/users/current_user_home"><span><i class="fa fa-home fa-lg" aria-hidden="true"></i>  My Carts</span></a></li> -->
+          <!-- <li><a href="/vendors">Vendors</a></li> -->
+          <!-- <li><a href="/items">Items</a></li>
+          <li><a href="/rails/git">Git</a></li> -->
+          
         </ul>
 
         <ul class="nav navbar-nav navbar-right">
           <% if current_user == nil %>
+            <li><a href="/follows"><span><i class="fa fa-users fa-lg" aria-hidden="true"></i>  People</span></a></li>
             <li><a href="/users/sign_in">Sign In</a></li>
             <li><a href="/users/sign_up">Sign Up</a></li>
           <% else %>
+            <li><a href="/follows"><span><i class="fa fa-users fa-lg" aria-hidden="true"></i>  Follows</span></a></li>
+            <li><a href="/users/<%= current_user.id %>"><span><i class="fa fa-home fa-lg" aria-hidden="true"></i>  My Carts</span></a></li>
             <li><a href="/users/edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>  <%= current_user.email %></a></li>
             <li><a href="/users/sign_out" data-method="delete" rel="nofollow"><i class="fa fa-sign-out" aria-hidden="true"></i> Sign Out</a></li>
           <% end %>

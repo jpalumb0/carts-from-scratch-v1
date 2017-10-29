@@ -1,29 +1,122 @@
-<h2>Sign up</h2>
+<div class="container padding-inside-top-md padding-inside-bottom-md">
+    <div class="row welcome_banner" style="background-image: url(https://images.unsplash.com/photo-1496715976403-7e36dc43f17b?auto=format&fit=crop&w=1350&q=60&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D);background-position: fixed;
+background-size: cover;
+background-repeat: no-repeat;">
+        <div class="col-sm-8 col-sm-offset-2" style="text-align:center">
+            <h1 style="color:white">Welcome to CartOfCarts!</h1>
+            <p class="lead" style="color:white">
+                Save items from any site into your personal Cart for later.<b></b>
+                Share your wish list with friends and family
+            </p>
+        </div>
+    </div>
+    <div class="row padding-inside-top-lg">
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+        <div class="col-sm-5 col-sm-offset-1">
+            <h2>
+              Take your docs anywhere
+            </h2>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
+            <p>
+              Save items from any site into your personal Cart for later.<b></b>
+                    Share your wish list with friends and family
+            </p>
+        </div>
+        <div class="col-lg-4 col-lg-offset-1">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h2 class="panel-title">Sign up</h2>
+              </div>
+              <div class="panel-body">
+                <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+                  <%= devise_error_messages! %>
+                
+                  <div class="form_group">
+                    <%= f.label :email %>
+                    <div>
+                      <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "Email" %>
+                    </div>
+                  </div>
+                 
+                  <div class="form_group">
+                    <%= f.label :password %>
+                    <% if @minimum_password_length %>
+                      <em>(<%= @minimum_password_length %> characters minimum)</em>
+                    <% end %>
+                    <div >
+                      <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "Password" %>
+                    </div>
+                  </div>
+                
+                  <div class="form_group">
+                    <%= f.label :password_confirmation %>
+                    <div >
+                      <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", placeholder: "Re-enter Password" %>
+                    </div>
+                  </div>
+                
+                  <div class="form-group margin-above-top-sm">
+                    <div class="actions">
+                      <div >
+                        <%= f.submit "Sign up", class: "btn btn-success btn-block" %>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="form_group">
+                    <%= render "devise/shared/links" %>
+                  </div>
+                <% end %>
+                
+                
+              </div>
+            </div>
+        </div><!-- form col -->
+     </div><!-- end row -->
+      
+    <div class="row">
+      <div class="col-md-4 col-md-offset-2">
+        
+      </div>
+    </div>
+    <div class="row pic right padding-inside-top-lg">
+        <div class="col-sm-offset-1 col-sm-6">
+            <h2>
+                Universal Cart (Coming Soon!)
+            </h2>
+            <p>
+                Add items to your universal cart straight from your all of your favorite sites.  Checkout with a single sign on.  Your cart updates in real-time, just like a registry.
+            </p>
+        </div>
+        <div class="col-sm-3 col-sm-offset-1">
+            <img src="https://images.pexels.com/photos/5956/gift-brown-shopping-market.jpg?h=350&auto=compress&cs=tinysrgb" class="img-responsive">
+        </div>
+    </div>
+    <div class="row pic left padding-inside-top-lg">
+        <div class="col-sm-offset-1 col-sm-3">
+            <img src="https://images.unsplash.com/photo-1485182708500-e8f1f318ba72?auto=format&fit=crop&w=1385&q=60&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D" class="img-responsive">
+        </div>
+        <div class="col-sm-6 col-sm-offset-1">
+            <h2>
+                Smart Shopping (Coming Soon!)
+            </h2>
+            <p>
+                Need help shopping for the hard-to-by-for people on your list?  Get recommendations based on their previous purchases.  
+            </p>
+        </div>
+    </div>
+    <div class="row pic right padding-inside-top-lg">
+        <div class="col-sm-offset-1 col-sm-6">
+            <h2>
+                Social Shopping (Coming Soon!)
+            </h2>
+            <p>
+                Let your friends know about your latest must-haves.  See something you like in somebody else's cart?  Add it to your own?  Or just chat while you browse.
+            </p>
+        </div>
+        <div class="col-sm-3 col-sm-offset-1">
+            <img src="https://images.pexels.com/photos/5956/gift-brown-shopping-market.jpg?h=350&auto=compress&cs=tinysrgb" class="img-responsive">
+        </div>
+    </div>
+</div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
