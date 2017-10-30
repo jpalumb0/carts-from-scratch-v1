@@ -24,7 +24,7 @@ class ItemsController < ApplicationController
     
     #require "addressable/uri"
     url = params[:item_url]
-    #uri = Addressable::URI.parse(url)
+    url = Addressable::URI.encode(url)
     #url = uri.scheme + uri.host + uri.path
 
     page = HTTParty.get(url)
@@ -50,7 +50,7 @@ class ItemsController < ApplicationController
     
     @item.quantity_received = #vendor #quantity received is vendor name for now
     
-    @item.item_url = params[:item_url]
+    @item.item_url = url
     @item.vendor_id = "coming soon" #blank for now
     @item.image_url = "coming soon" #params[:image_url]
     @item.cart_id = params[:cart_id]
