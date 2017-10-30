@@ -59,7 +59,7 @@ group :test do
 end
 
 group :production do
-  gem 'pg' #removed version number from tutorial due to age 
+  gem 'pg' #removed version number from tutorial due to age
 end
 
 gem 'devise', github: 'plataformatec/devise'
