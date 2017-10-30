@@ -42,7 +42,7 @@ class ItemsController < ApplicationController
       vendor = nil
     end
 =end
-    @item.item_name = doc.css.("head").css("title").text.strip
+    @item.item_name = doc.css("head").css("title").text.strip
     
     @item.description = #price #for the moment, this is going to be price
   
