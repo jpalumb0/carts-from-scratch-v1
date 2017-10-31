@@ -9,7 +9,7 @@
 <% end %>
 
 <div class="page-header">
-  <h3>Edit Item #<%= @item.id %></h3>
+  <h3>Edit <%= @item.item_name%></h3>
 </div>
 
 <div class="row">
@@ -30,7 +30,7 @@
       <!-- Label and input for description -->
       <div class="form-group">
         <label for="description" class="control-label">
-          Description
+          Notes <!-- via Description -->
         </label>
 
         <textarea id="description" name="description" placeholder="Description" class="form-control" rows="3"><%= @item.description %></textarea>
@@ -66,16 +66,15 @@
       <!-- Label and input for vendor_id -->
       <div class="form-group">
         <label for="vendor_id" class="control-label">
-          Vendor
         </label>
 
-        <input type="text" id="vendor_id" name="vendor_id" placeholder="Vendor" class="form-control" value="<%= @item.vendor_id %>">
+        <input type="hidden" id="vendor_id" name="vendor_id" placeholder="Vendor" class="form-control" value="<%= @item.vendor_id %>">
       </div>
 
       <!-- Label and input for image_url -->
       <div class="form-group">
         <label for="image_url" class="control-label">
-          Image url
+          Price <!-- Image url -->
         </label>
 
         <input type="text" id="image_url" name="image_url" placeholder="Image url" class="form-control" value="<%= @item.image_url %>">

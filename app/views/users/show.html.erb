@@ -27,7 +27,7 @@
       <div class="tab-content">
           <% @user.carts.each do |cart| %>
                   <div class="tab-pane fade <%= "in active" if @user.carts.first==cart %>" id="tab<%= cart.id %>default">
-                      
+                      <a href="/items/new?cart_id=<%= cart.id %>" class="btn btn-md btn-success btn-block"><span><i class="fa fa-plus" aria-hidden="true"></i>  Add Item</span></a>
                       <div class="table-responsive">
                       <table class="table table-striped table-hover">
                           <tr>
@@ -35,6 +35,8 @@
                             <th>Item name</th>
                             
                             <th>Item url</th>
+                            <th>Notes</th>
+                            <th>Price</th>
                             <!--<th>Vendor</th>
                             <th>Image url</th>
                     -->
@@ -45,12 +47,13 @@
                               <% cart.items.each do |item| %>
                                   <tr>
                                     <td><%= item.quantity_wanted %></td>
-                                    <td><a href=<%= item.item_url %>><%= item.item_name %></a></td>
+                                    <td><%= item.item_name %><!--default blank for now due to incompatibility with some sites</td> -->
                                     
                                     <td style="text-overflow:ellipsis"><a href=<%= item.item_url %>><%= item.item_url %></a></td>
-                                    <!--<td>na</td>
-                                    <td>na</td>
-                            -->
+                                    <td><%= item.description %></td>
+                                    <td><%= item.image_url %></td>
+                                   
+                            
                                     <td>
                                       <!-- <a href="/items/<%= item.id %>" class="btn btn-primary">Details</a> -->
                                       <span>
@@ -79,7 +82,8 @@
                              <% end %>
                         </table>
                       </div>
-                      <a href="/items/new?cart_id=<%= cart.id %>" class="btn btn-md btn-success btn-block"><span><i class="fa fa-plus" aria-hidden="true"></i>  Add Item</span></a>
+                      
+                      <a href="/delete_cart/<%= cart.id %>" class="btn btn-md btn-danger btn-block" onclick="return confirm('Are you sure you want to delete this item?');"><span><i class="fa fa-minus" aria-hidden="true"></i>  Delete Cart</span></a>
                   </div>
             <% end %>
           

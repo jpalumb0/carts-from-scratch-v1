@@ -42,17 +42,17 @@ class ItemsController < ApplicationController
       vendor = nil
     end
 =end
-    @item.item_name = doc.css("title").text.strip
+    @item.item_name = #doc.css("title").text.strip
     
-    @item.description = #price #for the moment, this is going to be price
+    @item.description = #blank 'Notes' #for the moment, this is going to be price
   
     @item.quantity_wanted = params[:quantity_wanted]
     
     @item.quantity_received = #vendor #quantity received is vendor name for now
     
     @item.item_url = url
-    @item.vendor_id = "coming soon" #blank for now
-    @item.image_url = "coming soon" #params[:image_url]
+    @item.vendor_id = #blank
+    @item.image_url = #temporarily 'price' #coming soon" #blank for now #params[:image_url]
     @item.cart_id = params[:cart_id]
 
     save_status = @item.save

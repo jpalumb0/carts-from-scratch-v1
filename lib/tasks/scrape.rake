@@ -3,11 +3,11 @@
 namespace :scrape do
    desc "Scrape item information from product URL"
    task :title => :environment do
-       url = "https://store.nike.com/us/en_us/pd/react-hyperdunk-2017-flyknit-basketball-shoe/pid-11598226/pgid-12086676#"
-       page = HTTParty.get(url)
+       #url = "https://store.nike.com/us/en_us/pd/react-hyperdunk-2017-flyknit-basketball-shoe/pid-11598226/pgid-12086676#"
+       #page = HTTParty.get(url)
        
-       #filename = Rails.root.join("lib","testscrape","Nike_test.html")
-       #page = open(filename)
+       filename = Rails.root.join("lib","testscrape","Nike_test.html")
+       page = open(filename)
        
        doc = Nokogiri::HTML(page)
        
