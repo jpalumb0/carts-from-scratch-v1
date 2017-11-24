@@ -5,6 +5,13 @@ class FollowsController < ApplicationController
   def index
     @follows = current_user.follows
     @users = User.all
+    
+    # use below when ransack
+    #def index  
+    #  @q = User.ransack(params[:q])
+    #  @users = @q.result
+    #end
+    
 
     render("follows/index.html.erb")
   end

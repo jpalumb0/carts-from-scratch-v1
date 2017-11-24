@@ -29,8 +29,9 @@
                   <div class="tab-pane fade <%= "in active" if @user.carts.first==cart %>" id="tab<%= cart.id %>default">
                       <a href="/items/new?cart_id=<%= cart.id %>" class="btn btn-md btn-success btn-block"><span><i class="fa fa-plus" aria-hidden="true"></i>  Add Item</span></a>
                       <div class="table-responsive">
-                      <table class="table table-striped table-hover">
+                      <table class="table table-hover">
                           <tr>
+                            <th>Got it?</th>
                             <th>Quantity wanted</th>
                             <th>Item name</th>
                             
@@ -45,45 +46,215 @@
                           <!-- Need to update and move current_user check outward, as it will also determine presence of 'new cart' and 'new item' -->
                             <% if @user.id == current_user.id %>  
                               <% cart.items.each do |item| %>
-                                  <tr>
-                                    <td><%= item.quantity_wanted %></td>
-                                    <td><%= item.item_name %><!--default blank for now due to incompatibility with some sites</td> -->
-                                    
-                                    <td style="text-overflow:ellipsis"><a href=<%= item.item_url %>><%= item.item_url %></a></td>
-                                    <td><%= item.description %></td>
-                                    <td><%= item.image_url %></td>
-                                   
-                            
+                                  <% if item.gotit==true %>
+                                    <tr class="active text-muted">
+                                  <% else %>
+                                    <tr>
+                                  <% end %>
                                     <td>
-                                      <!-- <a href="/items/<%= item.id %>" class="btn btn-primary">Details</a> -->
-                                      <span>
-                                        <a href="/items/<%= item.id %>/edit" class="btn btn-warning">Edit</a>
-                                        <a href="/delete_item/<%= item.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
-                                      </span>
-                                    </td>
+                                      <form action="/update_item/<%= item.id %>" method="post">
+                                        
+                                     
+                                        <!-- Hidden input for authenticity token to protect from forgery -->
+                                        <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+                                  
+                                        <!-- Label and input for item_name -->
+                                       
+                                          <input type="hidden" id="item_name" name="item_name" placeholder="Item name" class="form-control" value="<%= item.item_name %>">
+                                       
+                                  
+                                        <!-- Label and input for description -->
+                                      
+                                  
+                                          <input type="hidden" id="description" name="description" placeholder="Description" class="form-control" value="<%= item.description %>">
+                                     
+                                  
+                                        <!-- Label and input for quantity_wanted -->
+                                        
+                                          <input type="hidden" id="quantity_wanted" name="quantity_wanted" placeholder="Quantity wanted" class="form-control" value="<%= item.quantity_wanted %>">
+                                       
+                                  
+                                        <!-- Label and input for quantity_received -->
+                                        
+                                          <input type="hidden" id="quantity_received" name="quantity_received" placeholder="Quantity received" class="form-control" value="<%= item.quantity_received %>">
+                                        
+                                  
+                                        <!-- Label and input for item_url -->
+                                        
+                                          <input type="hidden" id="item_url" name="item_url" placeholder="Item url" class="form-control" value="<%= item.item_url %>">
+                                        
+                                  
+                                        <!-- Label and input for vendor_id -->
+                                        
+                                          <input type="hidden" id="vendor_id" name="vendor_id" placeholder="Vendor" class="form-control" value="<%= item.vendor_id %>">
+                                        
+                                  
+                                        <!-- Label and input for image_url -->
+                                        
+                                  
+                                          <input type="hidden" id="image_url" name="image_url" placeholder="Image url" class="form-control" value="<%= item.image_url %>">
+                                        
+                                  
+                                        <!-- Label and input for user_id -->
+                                        
+                                  
+                                          <input type="hidden" id="cart_id" name="cart_id" placeholder="Cart" class="form-control" value="<%= item.cart_id %>">
+                                        
+    
+                                        
+                                          <input type="hidden" name="gotit" value="<%= !item.gotit %>">
+                                        
+                                        <% if item.gotit == true %>
+                                          
+                                            <button class="btn btn-link" type="submit">
+                                              <i class="fa fa-check-square-o fa-2x"></i> 
+                                            </button>
+                                            
+                                           <td>0</td>
+                                            <td><%= item.item_name %><!--default blank for now due to incompatibility with some sites</td> -->
+                                            
+                                            <td style="text-overflow:ellipsis"><%= item.item_url %></td>
+                                            <td><%= item.description %></td>
+                                            <td><%= item.image_url %></td>
+                                           
+                                    
+                                            <td>
+                                              <!-- <a href="/items/<%= item.id %>" class="btn btn-primary">Details</a> -->
+                                              <span>
+                                                <a href="/items/<%= item.id %>/edit" class="btn btn-warning">Edit</a>
+                                                <a href="/delete_item/<%= item.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+                                              </span>
+                                            </td>
+                                          
+                                        <% else %>
+                                          <button class="btn btn-link" type="submit">
+                                            <i class="fa fa-square-o fa-2x"></i>
+                                          </button>
+                                          
+                                          <td><%= item.quantity_wanted %></td>
+                                            <td><a href=<%= item.item_url %>><%= item.item_name %></a></td><!--default blank for now due to incompatibility with some sites</td> -->
+                                            
+                                            <td style="text-overflow:ellipsis"><a href=<%= item.item_url %>><%= item.item_url %></a></td>
+                                            <td><%= item.description %></td>
+                                            <td><%= item.image_url %></td>
+                                           
+                                    
+                                            <td>
+                                              <!-- <a href="/items/<%= item.id %>" class="btn btn-primary">Details</a> -->
+                                              <span>
+                                                <a href="/items/<%= item.id %>/edit" class="btn btn-warning">Edit</a>
+                                                <a href="/delete_item/<%= item.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+                                              </span>
+                                            </td>
+                                          
+                                        <% end %>
+                                      </form>
+                                    </td> <!-- gotit checkbox -->
+                                   
                                   </tr>
                               <% end %>
                             <% else %> 
                               <% cart.items.each do |item| %>
-                                  <tr>
-                                    <td><%= item.quantity_wanted %></td>
-                                    <td><a href=<%= item.item_url %>><%= item.item_name %></a></td>
-
-                                    <td style="text-overflow:ellipsis"><a href=<%= item.item_url %>><%= item.item_url %></a></td>
-                                    <!--<td>na</td>
-                                    <td>na</td>
-                            -->
+                                  <% if item.gotit==true %>
+                                    <tr class="active text-muted">
+                                  <% else %>
+                                    <tr>
+                                  <% end %>
                                     <td>
-                                      <!-- <a href="/items/<%= item.id %>" class="btn btn-primary">Details</a> -->
-                                      <a href="/delete_item/<%= item.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
-                                    </td>
+                                      <form action="/update_item/<%= item.id %>" method="post">
+                                            
+                                     
+                                        <!-- Hidden input for authenticity token to protect from forgery -->
+                                        <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+                                  
+                                        <!-- Label and input for item_name -->
+                                        
+                                  
+                                          <input type="hidden" id="item_name" name="item_name" placeholder="Item name" class="form-control" value="<%= item.item_name %>">
+                                        
+                                  
+                                        <!-- Label and input for description -->
+                                        
+                                  
+                                          <input type="hidden" id="description" name="description" placeholder="Description" class="form-control" value="<%= item.description %>">
+                                        
+                                  
+                                        <!-- Label and input for quantity_wanted -->
+                                        
+                                          <input type="hidden" id="quantity_wanted" name="quantity_wanted" placeholder="Quantity wanted" class="form-control" value="<%= item.quantity_wanted %>">
+                                        
+                                  
+                                        <!-- Label and input for quantity_received -->
+                                       
+                                          <input type="hidden" id="quantity_received" name="quantity_received" placeholder="Quantity received" class="form-control" value="<%= item.quantity_received %>">
+                                       
+                                        <!-- Label and input for item_url -->
+                                        
+                                  
+                                          <input type="hidden" id="item_url" name="item_url" placeholder="Item url" class="form-control" value="<%= item.item_url %>">
+                                        
+                                        <!-- Label and input for vendor_id -->
+                                        
+                                          <input type="hidden" id="vendor_id" name="vendor_id" placeholder="Vendor" class="form-control" value="<%= item.vendor_id %>">
+                                        
+                                  
+                                        <!-- Label and input for image_url -->
+                                        
+                                  
+                                          <input type="hidden" id="image_url" name="image_url" placeholder="Image url" class="form-control" value="<%= item.image_url %>">
+                                       
+                                  
+                                        <!-- Label and input for user_id -->
+                                        
+                                  
+                                          <input type="hidden" id="cart_id" name="cart_id" placeholder="Cart" class="form-control" value="<%= item.cart_id %>">
+                                        
+                                        <input type="hidden" name="gotit" value="<%= !item.gotit %>">
+                                        <% if item.gotit == true %>
+                                          <button class="btn btn-link" type="submit">
+                                            <i class="fa fa-check-square-o fa-2x"></i>
+                                          </button>
+                                          
+                                          <td>0</td>
+                                          <td><%= item.item_name %></td>
+      
+                                          <td style="text-overflow:ellipsis"><%= item.item_url %></td>
+                                          <!--<td>na</td>
+                                          <td>na</td>
+                                  -->
+                                          <td>
+                                            <!-- <a href="/items/<%= item.id %>" class="btn btn-primary">Details</a> -->
+                                            <!-- <a href="/delete_item/<%= item.id %>" class="btn btn-danger" rel="nofollow">Delete</a> -->
+                                          </td>
+                                        <% else %>
+                                          <button class="btn btn-link" type="submit">
+                                            <i class="fa fa-square-o fa-2x"></i>
+                                          </button>
+                                          
+                                          <td><%= item.quantity_wanted %></td>
+                                          <td><a href=<%= item.item_url %>><%= item.item_name %></a></td>
+      
+                                          <td style="text-overflow:ellipsis"><a href=<%= item.item_url %>><%= item.item_url %></a></td>
+                                          <!--<td>na</td>
+                                          <td>na</td>
+                                  -->
+                                          <td>
+                                            <!-- <a href="/items/<%= item.id %>" class="btn btn-primary">Details</a> -->
+                                            <!-- <a href="/delete_item/<%= item.id %>" class="btn btn-danger" rel="nofollow">Delete</a> -->
+                                          </td>
+                                        <% end %>
+                                      </form>
+                                    </td> <!-- gotit checkbox -->
+                                    
                                   </tr>
                               <% end %>
                              <% end %>
                         </table>
                       </div>
                       
-                      <a href="/delete_cart/<%= cart.id %>" class="btn btn-md btn-danger btn-block" onclick="return confirm('Are you sure you want to delete this item?');"><span><i class="fa fa-minus" aria-hidden="true"></i>  Delete Cart</span></a>
+                      <% if @user.id==current_user.id %>
+                        <a href="/delete_cart/<%= cart.id %>" class="btn btn-md btn-danger btn-block" onclick="return confirm('Are you sure you want to delete this cart?');"><span><i class="fa fa-minus" aria-hidden="true"></i>  Delete Cart</span></a>
+                      <% end %>
                   </div>
             <% end %>
           

@@ -1,4 +1,6 @@
 class ItemsController < ApplicationController
+  skip_before_action :verify_authenticity_token
+  
   def index
     @items = Item.all
 
@@ -54,6 +56,7 @@ class ItemsController < ApplicationController
     @item.vendor_id = #blank
     @item.image_url = #temporarily 'price' #coming soon" #blank for now #params[:image_url]
     @item.cart_id = params[:cart_id]
+    @item.gotit = params[:gotit]
 
     save_status = @item.save
 
@@ -81,11 +84,12 @@ class ItemsController < ApplicationController
     @item.vendor_id = params[:vendor_id]
     @item.image_url = params[:image_url]
     @item.cart_id = params[:cart_id]
+    @item.gotit = params[:gotit]
 
     save_status = @item.save
 
     if save_status == true
-      redirect_to("/users/#{current_user.id}", :notice => "Item updated successfully.")
+      redirect_to(:back, :notice => "Item updated successfully.")
     else
       render("items/edit.html.erb")
     end
