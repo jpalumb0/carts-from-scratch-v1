@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 20171124042737) do
     t.integer  "cart_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "gotit"
+    t.boolean  "gotit",             default: false, null: false
   end
 
   create_table "users", force: :cascade do |t|

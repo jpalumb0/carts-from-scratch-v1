@@ -18884,3 +18884,239 @@ Processing by UsersController#show as HTML
   [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."cart_id" = ?[0m  [["cart_id", 7]]
   Rendered users/show.html.erb within layouts/application (11.5ms)
 Completed 200 OK in 62ms (Views: 55.7ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/users/4" for 67.186.116.218 at 2017-11-25 04:47:00 +0000
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 4]]
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35mCart Load (0.3ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."user_id" = ?  [["user_id", 4]]
+  [1m[36mItem Load (0.3ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."cart_id" = ?[0m  [["cart_id", 5]]
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."cart_id" = ?  [["cart_id", 6]]
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."cart_id" = ?[0m  [["cart_id", 7]]
+  Rendered users/show.html.erb within layouts/application (46.1ms)
+Completed 200 OK in 155ms (Views: 98.0ms | ActiveRecord: 4.0ms)
+
+
+Started POST "/update_item/8" for 67.186.116.218 at 2017-11-25 04:47:03 +0000
+Processing by ItemsController#update as HTML
+  Parameters: {"authenticity_token"=>"pBKXsrlNgrPJqfesbcDPLEo4dR8o29SwFkw5pke+/XBB8mNmSMTo7ssjngBAedA0sYQHWRJ5uFM21LdOtMhgKg==", "item_name"=>"Cypher Run - Men's  - Running,  - New Balance choo choo", "description"=>"1", "quantity_wanted"=>"1", "quantity_received"=>"0", "item_url"=>"https://www.newbalance.com/pd/cypher-run/MSRMC.html", "vendor_id"=>"0", "image_url"=>"coming soon", "cart_id"=>"5", "gotit"=>"true", "id"=>"8"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 4]]
+  [1m[36mItem Load (0.5ms)[0m  [1mSELECT  "items".* FROM "items" WHERE "items"."id" = ? LIMIT 1[0m  [["id", 8]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mUPDATE "items" SET "gotit" = ?, "updated_at" = ? WHERE "items"."id" = ?[0m  [["gotit", "t"], ["updated_at", "2017-11-25 04:47:03.257288"], ["id", 8]]
+  [1m[35m (20.0ms)[0m  commit transaction
+Redirected to https://carts-from-scratch-v1-jpalumb0.c9users.io/users/4
+Completed 302 Found in 34ms (ActiveRecord: 21.1ms)
+
+
+Started GET "/users/4" for 67.186.116.218 at 2017-11-25 04:47:03 +0000
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 4]]
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mCart Load (0.2ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."user_id" = ?[0m  [["user_id", 4]]
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."cart_id" = ?  [["cart_id", 5]]
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."cart_id" = ?[0m  [["cart_id", 6]]
+  [1m[35mItem Load (0.1ms)[0m  SELECT "items".* FROM "items" WHERE "items"."cart_id" = ?  [["cart_id", 7]]
+  Rendered users/show.html.erb within layouts/application (10.4ms)
+Completed 200 OK in 53ms (Views: 47.3ms | ActiveRecord: 1.2ms)
+  [1m[36m (0.3ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to AddGotitToItems (20171124042737)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (15.4ms)[0m  CREATE TEMPORARY TABLE "aitems" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "item_name" varchar, "description" text, "quantity_wanted" integer, "quantity_received" integer, "item_url" varchar, "vendor_id" integer, "image_url" varchar, "cart_id" integer, "created_at" datetime, "updated_at" datetime, "gotit" boolean) 
+  [1m[36m (0.2ms)[0m  [1mSELECT * FROM "items"[0m
+  [1m[35m (0.2ms)[0m  INSERT INTO "aitems" ("id","item_name","description","quantity_wanted","quantity_received","item_url","vendor_id","image_url","cart_id","created_at","updated_at","gotit") VALUES (1, 'Flyknit test', '', NULL, NULL, 'https://store.nike.com/us/en_us/pd/react-hyperdunk-2017-flyknit-basketball-shoe/pid-11598226/pgid-12086676https://store.nike.com/us/en_us/pd/react-hyperdunk-2017-flyknit-basketball-shoe/pid-11598226/pgid-12086676', 0, '', NULL, '2017-10-20 20:40:34.866800', '2017-10-20 20:40:34.866800', NULL)
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "aitems" ("id","item_name","description","quantity_wanted","quantity_received","item_url","vendor_id","image_url","cart_id","created_at","updated_at","gotit") VALUES (2, 'Nike React Hyperdunk 2017 Flyknit Basketball Shoe. Nike.com', '160.0', 1, 0, 'https://store.nike.com/us/en_us/pd/react-hyperdunk-2017-flyknit-basketball-shoe/pid-11598226/pgid-12086676#', 0, 'coming soon', 1, '2017-10-23 20:25:27.125217', '2017-10-23 20:25:27.125217', NULL)[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "aitems" ("id","item_name","description","quantity_wanted","quantity_received","item_url","vendor_id","image_url","cart_id","created_at","updated_at","gotit") VALUES (3, 'Nike React Hyperdunk 2017 Flyknit Basketball Shoe. Nike.com', '160.0', 1, 0, 'https://store.nike.com/us/en_us/pd/react-hyperdunk-2017-flyknit-basketball-shoe/pid-11598226/pgid-12086676#', 0, 'coming soon', 1, '2017-10-23 21:33:26.471290', '2017-11-24 07:13:48.672933', 'f')
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "aitems" ("id","item_name","description","quantity_wanted","quantity_received","item_url","vendor_id","image_url","cart_id","created_at","updated_at","gotit") VALUES (4, 'adidas ''UltraBoost'' Running Shoe (Men) | NordstromArtboard', '1', 1, 0, 'https://shop.nordstrom.com/s/adidas-ultraboost-running-shoe-men/3845657?origin=category-personalizedsort&fashioncolor=GREY%20THREE%2F%20GREY%20FOUR', 0, 'coming soon', 1, '2017-10-23 21:35:38.019701', '2017-10-23 21:35:38.019701', NULL)[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "aitems" ("id","item_name","description","quantity_wanted","quantity_received","item_url","vendor_id","image_url","cart_id","created_at","updated_at","gotit") VALUES (5, 'Nike React Hyperdunk 2017 Flyknit Basketball Shoe. Nike.com', '1', 1, 0, 'https://store.nike.com/us/en_us/pd/react-hyperdunk-2017-flyknit-basketball-shoe/pid-11598226/pgid-12086676#', 0, 'coming soon', 1, '2017-10-24 15:30:13.422691', '2017-11-25 04:25:41.680382', 'f')
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "aitems" ("id","item_name","description","quantity_wanted","quantity_received","item_url","vendor_id","image_url","cart_id","created_at","updated_at","gotit") VALUES (6, 'Apple Watch - Silver Aluminum Case with Seashell Sport Loop - Apple', '1', 1, 0, 'https://www.apple.com/shop/buy-watch/apple-watch/silver-aluminum-seashell-sport-loop?preSelect=false&product=MQJR2LL/A&step=detail', 0, 'coming soon', 2, '2017-10-25 04:17:14.773832', '2017-10-25 04:17:14.773832', NULL)[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "aitems" ("id","item_name","description","quantity_wanted","quantity_received","item_url","vendor_id","image_url","cart_id","created_at","updated_at","gotit") VALUES (7, 'White Lace Rope Women''s Espadrilles  | TOMS®', '1', 2, 0, 'http://www.toms.com/featured-shops/white-lace-rope-womens-classics-alpargatas', 0, 'coming soon', 4, '2017-10-28 04:53:56.315927', '2017-10-28 05:21:11.258192', NULL)
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "aitems" ("id","item_name","description","quantity_wanted","quantity_received","item_url","vendor_id","image_url","cart_id","created_at","updated_at","gotit") VALUES (8, 'Cypher Run - Men''s  - Running,  - New Balance choo choo', '1', 1, 0, 'https://www.newbalance.com/pd/cypher-run/MSRMC.html', 0, 'coming soon', 5, '2017-10-29 15:59:07.453019', '2017-11-25 04:47:03.257288', 't')[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "aitems" ("id","item_name","description","quantity_wanted","quantity_received","item_url","vendor_id","image_url","cart_id","created_at","updated_at","gotit") VALUES (9, 'Cypher Run - Men''s  - Running,  - New Balance', '1', 1, 0, 'https://www.newbalance.com/pd/cypher-run/MSRMC.html#color=Triumph%20Green_with_Black&size=12&width=D', 0, 'coming soon', 5, '2017-10-30 01:48:34.555695', '2017-10-30 01:48:34.555695', NULL)
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "aitems" ("id","item_name","description","quantity_wanted","quantity_received","item_url","vendor_id","image_url","cart_id","created_at","updated_at","gotit") VALUES (10, 'Fresh Foam Cruz - Men''s  - Running, Cushioning - New Balance', '1', 1, 0, 'http://www.newbalance.com/pd/fresh-foam-cruz/MCRUZ-O.html?dwvar_MCRUZ-O_color=Phantom#color=Phantom&size=12', 0, 'coming soon', 5, '2017-10-30 02:25:35.811185', '2017-11-25 04:25:11.207286', 'f')[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "aitems" ("id","item_name","description","quantity_wanted","quantity_received","item_url","vendor_id","image_url","cart_id","created_at","updated_at","gotit") VALUES (11, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2017-10-30 02:26:21.773008', '2017-11-24 06:16:18.598444', 't')
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "aitems" ("id","item_name","description","quantity_wanted","quantity_received","item_url","vendor_id","image_url","cart_id","created_at","updated_at","gotit") VALUES (15, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2017-11-24 05:42:18.039730', '2017-11-24 06:16:08.336919', 't')[0m
+  [1m[35m (0.4ms)[0m  DROP TABLE "items"
+  [1m[36m (0.2ms)[0m  [1mCREATE TABLE "items" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "item_name" varchar, "description" text, "quantity_wanted" integer, "quantity_received" integer, "item_url" varchar, "vendor_id" integer, "image_url" varchar, "cart_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (0.2ms)[0m  SELECT * FROM "aitems"
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "items" ("id","item_name","description","quantity_wanted","quantity_received","item_url","vendor_id","image_url","cart_id","created_at","updated_at") VALUES (1, 'Flyknit test', '', NULL, NULL, 'https://store.nike.com/us/en_us/pd/react-hyperdunk-2017-flyknit-basketball-shoe/pid-11598226/pgid-12086676https://store.nike.com/us/en_us/pd/react-hyperdunk-2017-flyknit-basketball-shoe/pid-11598226/pgid-12086676', 0, '', NULL, '2017-10-20 20:40:34.866800', '2017-10-20 20:40:34.866800')[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "items" ("id","item_name","description","quantity_wanted","quantity_received","item_url","vendor_id","image_url","cart_id","created_at","updated_at") VALUES (2, 'Nike React Hyperdunk 2017 Flyknit Basketball Shoe. Nike.com', '160.0', 1, 0, 'https://store.nike.com/us/en_us/pd/react-hyperdunk-2017-flyknit-basketball-shoe/pid-11598226/pgid-12086676#', 0, 'coming soon', 1, '2017-10-23 20:25:27.125217', '2017-10-23 20:25:27.125217')
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "items" ("id","item_name","description","quantity_wanted","quantity_received","item_url","vendor_id","image_url","cart_id","created_at","updated_at") VALUES (3, 'Nike React Hyperdunk 2017 Flyknit Basketball Shoe. Nike.com', '160.0', 1, 0, 'https://store.nike.com/us/en_us/pd/react-hyperdunk-2017-flyknit-basketball-shoe/pid-11598226/pgid-12086676#', 0, 'coming soon', 1, '2017-10-23 21:33:26.471290', '2017-11-24 07:13:48.672933')[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "items" ("id","item_name","description","quantity_wanted","quantity_received","item_url","vendor_id","image_url","cart_id","created_at","updated_at") VALUES (4, 'adidas ''UltraBoost'' Running Shoe (Men) | NordstromArtboard', '1', 1, 0, 'https://shop.nordstrom.com/s/adidas-ultraboost-running-shoe-men/3845657?origin=category-personalizedsort&fashioncolor=GREY%20THREE%2F%20GREY%20FOUR', 0, 'coming soon', 1, '2017-10-23 21:35:38.019701', '2017-10-23 21:35:38.019701')
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "items" ("id","item_name","description","quantity_wanted","quantity_received","item_url","vendor_id","image_url","cart_id","created_at","updated_at") VALUES (5, 'Nike React Hyperdunk 2017 Flyknit Basketball Shoe. Nike.com', '1', 1, 0, 'https://store.nike.com/us/en_us/pd/react-hyperdunk-2017-flyknit-basketball-shoe/pid-11598226/pgid-12086676#', 0, 'coming soon', 1, '2017-10-24 15:30:13.422691', '2017-11-25 04:25:41.680382')[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "items" ("id","item_name","description","quantity_wanted","quantity_received","item_url","vendor_id","image_url","cart_id","created_at","updated_at") VALUES (6, 'Apple Watch - Silver Aluminum Case with Seashell Sport Loop - Apple', '1', 1, 0, 'https://www.apple.com/shop/buy-watch/apple-watch/silver-aluminum-seashell-sport-loop?preSelect=false&product=MQJR2LL/A&step=detail', 0, 'coming soon', 2, '2017-10-25 04:17:14.773832', '2017-10-25 04:17:14.773832')
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "items" ("id","item_name","description","quantity_wanted","quantity_received","item_url","vendor_id","image_url","cart_id","created_at","updated_at") VALUES (7, 'White Lace Rope Women''s Espadrilles  | TOMS®', '1', 2, 0, 'http://www.toms.com/featured-shops/white-lace-rope-womens-classics-alpargatas', 0, 'coming soon', 4, '2017-10-28 04:53:56.315927', '2017-10-28 05:21:11.258192')[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "items" ("id","item_name","description","quantity_wanted","quantity_received","item_url","vendor_id","image_url","cart_id","created_at","updated_at") VALUES (8, 'Cypher Run - Men''s  - Running,  - New Balance choo choo', '1', 1, 0, 'https://www.newbalance.com/pd/cypher-run/MSRMC.html', 0, 'coming soon', 5, '2017-10-29 15:59:07.453019', '2017-11-25 04:47:03.257288')
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "items" ("id","item_name","description","quantity_wanted","quantity_received","item_url","vendor_id","image_url","cart_id","created_at","updated_at") VALUES (9, 'Cypher Run - Men''s  - Running,  - New Balance', '1', 1, 0, 'https://www.newbalance.com/pd/cypher-run/MSRMC.html#color=Triumph%20Green_with_Black&size=12&width=D', 0, 'coming soon', 5, '2017-10-30 01:48:34.555695', '2017-10-30 01:48:34.555695')[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "items" ("id","item_name","description","quantity_wanted","quantity_received","item_url","vendor_id","image_url","cart_id","created_at","updated_at") VALUES (10, 'Fresh Foam Cruz - Men''s  - Running, Cushioning - New Balance', '1', 1, 0, 'http://www.newbalance.com/pd/fresh-foam-cruz/MCRUZ-O.html?dwvar_MCRUZ-O_color=Phantom#color=Phantom&size=12', 0, 'coming soon', 5, '2017-10-30 02:25:35.811185', '2017-11-25 04:25:11.207286')
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "items" ("id","item_name","description","quantity_wanted","quantity_received","item_url","vendor_id","image_url","cart_id","created_at","updated_at") VALUES (11, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2017-10-30 02:26:21.773008', '2017-11-24 06:16:18.598444')[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "items" ("id","item_name","description","quantity_wanted","quantity_received","item_url","vendor_id","image_url","cart_id","created_at","updated_at") VALUES (15, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2017-11-24 05:42:18.039730', '2017-11-24 06:16:08.336919')
+  [1m[36m (0.4ms)[0m  [1mDROP TABLE "aitems"[0m
+  [1m[35mSQL (0.4ms)[0m  DELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = ?  [["version", "20171124042737"]]
+  [1m[36m (13.2ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.2ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddGotitToItems (20171124042737)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.5ms)[0m  [1mALTER TABLE "items" ADD "gotit" boolean DEFAULT 'f' NOT NULL[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20171124042737"]]
+  [1m[36m (17.2ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+
+
+
+Started GET "/" for 67.186.116.218 at 2017-11-25 05:57:40 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by UsersController#current_user_home as HTML
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 4]]
+Redirected to https://carts-from-scratch-v1-jpalumb0.c9users.io/users/4
+Completed 302 Found in 54ms (ActiveRecord: 1.0ms)
+
+
+Started GET "/users/4" for 67.186.116.218 at 2017-11-25 05:57:40 +0000
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 4]]
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mCart Load (0.3ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."user_id" = ?[0m  [["user_id", 4]]
+  [1m[35mItem Load (0.4ms)[0m  SELECT "items".* FROM "items" WHERE "items"."cart_id" = ?  [["cart_id", 5]]
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."cart_id" = ?[0m  [["cart_id", 6]]
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."cart_id" = ?  [["cart_id", 7]]
+  Rendered users/show.html.erb within layouts/application (101.8ms)
+Completed 200 OK in 622ms (Views: 607.8ms | ActiveRecord: 2.9ms)
+
+
+Started POST "/update_item/8" for 67.186.116.218 at 2017-11-25 05:57:44 +0000
+Processing by ItemsController#update as HTML
+  Parameters: {"authenticity_token"=>"nySRO3Au8gyro+/BjguVwd83qJEAiV5Mzz7KH1aUnn16xGXvgaeYUakphm2jsorZJIva1zorMq/vpkT3peIDJw==", "item_name"=>"Cypher Run - Men's  - Running,  - New Balance choo choo", "description"=>"1", "quantity_wanted"=>"1", "quantity_received"=>"0", "item_url"=>"https://www.newbalance.com/pd/cypher-run/MSRMC.html", "vendor_id"=>"0", "image_url"=>"coming soon", "cart_id"=>"5", "gotit"=>"true", "id"=>"8"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 4]]
+  [1m[35mItem Load (0.4ms)[0m  SELECT  "items".* FROM "items" WHERE "items"."id" = ? LIMIT 1  [["id", 8]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  UPDATE "items" SET "gotit" = ?, "updated_at" = ? WHERE "items"."id" = ?  [["gotit", "t"], ["updated_at", "2017-11-25 05:57:44.115131"], ["id", 8]]
+  [1m[36m (16.6ms)[0m  [1mcommit transaction[0m
+Redirected to https://carts-from-scratch-v1-jpalumb0.c9users.io/users/4
+Completed 302 Found in 36ms (ActiveRecord: 17.9ms)
+
+
+Started GET "/users/4" for 67.186.116.218 at 2017-11-25 05:57:44 +0000
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 4]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35mCart Load (0.2ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."user_id" = ?  [["user_id", 4]]
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."cart_id" = ?[0m  [["cart_id", 5]]
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."cart_id" = ?  [["cart_id", 6]]
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."cart_id" = ?[0m  [["cart_id", 7]]
+  Rendered users/show.html.erb within layouts/application (12.1ms)
+Completed 200 OK in 60ms (Views: 53.6ms | ActiveRecord: 1.3ms)
+
+
+Started POST "/update_item/8" for 67.186.116.218 at 2017-11-25 05:57:45 +0000
+Processing by ItemsController#update as HTML
+  Parameters: {"authenticity_token"=>"kKjHAZpNrSUK0nHI5YWCdL2sFe8Z9GIvE97E7VHWjah1SDPVa8THeAhYGGTIPJ1sRhBnqSNWDswzRkoFoqAQ8g==", "item_name"=>"Cypher Run - Men's  - Running,  - New Balance choo choo", "description"=>"1", "quantity_wanted"=>"1", "quantity_received"=>"0", "item_url"=>"https://www.newbalance.com/pd/cypher-run/MSRMC.html", "vendor_id"=>"0", "image_url"=>"coming soon", "cart_id"=>"5", "gotit"=>"false", "id"=>"8"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 4]]
+  [1m[36mItem Load (0.1ms)[0m  [1mSELECT  "items".* FROM "items" WHERE "items"."id" = ? LIMIT 1[0m  [["id", 8]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "items" SET "gotit" = ?, "updated_at" = ? WHERE "items"."id" = ?[0m  [["gotit", "f"], ["updated_at", "2017-11-25 05:57:45.835789"], ["id", 8]]
+  [1m[35m (13.9ms)[0m  commit transaction
+Redirected to https://carts-from-scratch-v1-jpalumb0.c9users.io/users/4
+Completed 302 Found in 26ms (ActiveRecord: 14.7ms)
+
+
+Started GET "/users/4" for 67.186.116.218 at 2017-11-25 05:57:45 +0000
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 4]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mCart Load (0.2ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."user_id" = ?[0m  [["user_id", 4]]
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."cart_id" = ?  [["cart_id", 5]]
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."cart_id" = ?[0m  [["cart_id", 6]]
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."cart_id" = ?  [["cart_id", 7]]
+  Rendered users/show.html.erb within layouts/application (18.7ms)
+Completed 200 OK in 100ms (Views: 90.7ms | ActiveRecord: 1.1ms)
+
+
+Started POST "/update_item/8" for 67.186.116.218 at 2017-11-25 05:57:47 +0000
+Processing by ItemsController#update as HTML
+  Parameters: {"authenticity_token"=>"1TIItCiWyIjNO16gEsvQgVeKufqoGHZaGk2GB9Ncx8Yw0vxg2R+i1c+xNww/cs+ZrDbLvJK6Grk61QjvICpanA==", "item_name"=>"Cypher Run - Men's  - Running,  - New Balance choo choo", "description"=>"1", "quantity_wanted"=>"1", "quantity_received"=>"0", "item_url"=>"https://www.newbalance.com/pd/cypher-run/MSRMC.html", "vendor_id"=>"0", "image_url"=>"coming soon", "cart_id"=>"5", "gotit"=>"true", "id"=>"8"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 4]]
+  [1m[35mItem Load (0.2ms)[0m  SELECT  "items".* FROM "items" WHERE "items"."id" = ? LIMIT 1  [["id", 8]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  UPDATE "items" SET "gotit" = ?, "updated_at" = ? WHERE "items"."id" = ?  [["gotit", "t"], ["updated_at", "2017-11-25 05:57:47.223806"], ["id", 8]]
+  [1m[36m (15.7ms)[0m  [1mcommit transaction[0m
+Redirected to https://carts-from-scratch-v1-jpalumb0.c9users.io/users/4
+Completed 302 Found in 38ms (ActiveRecord: 16.7ms)
+
+
+Started GET "/users/4" for 67.186.116.218 at 2017-11-25 05:57:47 +0000
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 4]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35mCart Load (0.2ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."user_id" = ?  [["user_id", 4]]
+  [1m[36mItem Load (1.0ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."cart_id" = ?[0m  [["cart_id", 5]]
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."cart_id" = ?  [["cart_id", 6]]
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."cart_id" = ?[0m  [["cart_id", 7]]
+  Rendered users/show.html.erb within layouts/application (17.9ms)
+Completed 200 OK in 96ms (Views: 86.1ms | ActiveRecord: 2.1ms)
+
+
+Started POST "/update_item/8" for 67.186.116.218 at 2017-11-25 05:57:48 +0000
+Processing by ItemsController#update as HTML
+  Parameters: {"authenticity_token"=>"/xwlL7Ii4RpOqbNNwJP2XuADzO7FH96iKTsLbhRAeE8a/NH7Q6uLR0wj2uHtKulGG7++qP+9skEJo4WG5zblFQ==", "item_name"=>"Cypher Run - Men's  - Running,  - New Balance choo choo", "description"=>"1", "quantity_wanted"=>"1", "quantity_received"=>"0", "item_url"=>"https://www.newbalance.com/pd/cypher-run/MSRMC.html", "vendor_id"=>"0", "image_url"=>"coming soon", "cart_id"=>"5", "gotit"=>"false", "id"=>"8"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 4]]
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT  "items".* FROM "items" WHERE "items"."id" = ? LIMIT 1[0m  [["id", 8]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "items" SET "gotit" = ?, "updated_at" = ? WHERE "items"."id" = ?[0m  [["gotit", "f"], ["updated_at", "2017-11-25 05:57:48.241389"], ["id", 8]]
+  [1m[35m (12.9ms)[0m  commit transaction
+Redirected to https://carts-from-scratch-v1-jpalumb0.c9users.io/users/4
+Completed 302 Found in 24ms (ActiveRecord: 13.6ms)
+
+
+Started GET "/users/4" for 67.186.116.218 at 2017-11-25 05:57:48 +0000
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 4]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mCart Load (0.2ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."user_id" = ?[0m  [["user_id", 4]]
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."cart_id" = ?  [["cart_id", 5]]
+  [1m[36mItem Load (0.1ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."cart_id" = ?[0m  [["cart_id", 6]]
+  [1m[35mItem Load (0.1ms)[0m  SELECT "items".* FROM "items" WHERE "items"."cart_id" = ?  [["cart_id", 7]]
+  Rendered users/show.html.erb within layouts/application (8.4ms)
+Completed 200 OK in 45ms (Views: 39.6ms | ActiveRecord: 0.9ms)
