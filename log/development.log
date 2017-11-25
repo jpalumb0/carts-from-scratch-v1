@@ -18588,3 +18588,299 @@ Started GET "/assets/autocomplete-rails.self-7b9f3d470095312074f7dba7e53e16482b6
 
 
 Started GET "/assets/application.self-a1a74291c4c48f2f663a025ffa678498d6448b849a2d74c0ca25e39ee192c0a7.js?body=1" for 67.186.116.218 at 2017-11-25 04:17:27 +0000
+
+
+Started GET "/users/4" for 67.186.116.218 at 2017-11-25 04:24:49 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 4]]
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35mCart Load (0.3ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."user_id" = ?  [["user_id", 4]]
+  [1m[36mItem Load (0.3ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."cart_id" = ?[0m  [["cart_id", 5]]
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."cart_id" = ?  [["cart_id", 6]]
+  [1m[36mItem Load (0.1ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."cart_id" = ?[0m  [["cart_id", 7]]
+  Rendered users/show.html.erb within layouts/application (75.3ms)
+Completed 200 OK in 504ms (Views: 382.9ms | ActiveRecord: 3.3ms)
+
+
+Started POST "/update_item/10" for 67.186.116.218 at 2017-11-25 04:24:54 +0000
+Processing by ItemsController#update as HTML
+  Parameters: {"authenticity_token"=>"l0t+uo+zAH8bQDct2gwnruvc7RWOZ4MSU3BJ8eQ/enZ+PRT/+rxHHA76eqlVWvlvSds23PO1JWz+llSD6g00Dg==", "item_name"=>"Fresh Foam Cruz - Men's  - Running, Cushioning - New Balance", "description"=>"1", "quantity_wanted"=>"1", "quantity_received"=>"0", "item_url"=>"http://www.newbalance.com/pd/fresh-foam-cruz/MCRUZ-O.html?dwvar_MCRUZ-O_color=Phantom#color=Phantom&size=12", "vendor_id"=>"0", "image_url"=>"coming soon", "cart_id"=>"5", "gotit"=>"true", "id"=>"10"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 4]]
+  [1m[36mItem Load (0.4ms)[0m  [1mSELECT  "items".* FROM "items" WHERE "items"."id" = ? LIMIT 1[0m  [["id", 10]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.6ms)[0m  [1mUPDATE "items" SET "gotit" = ?, "updated_at" = ? WHERE "items"."id" = ?[0m  [["gotit", "t"], ["updated_at", "2017-11-25 04:24:54.443145"], ["id", 10]]
+  [1m[35m (19.1ms)[0m  commit transaction
+Redirected to https://carts-from-scratch-v1-jpalumb0.c9users.io/users/4
+Completed 302 Found in 43ms (ActiveRecord: 20.5ms)
+
+
+Started GET "/users/4" for 67.186.116.218 at 2017-11-25 04:24:54 +0000
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 4]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mCart Load (0.2ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."user_id" = ?[0m  [["user_id", 4]]
+  [1m[35mItem Load (0.3ms)[0m  SELECT "items".* FROM "items" WHERE "items"."cart_id" = ?  [["cart_id", 5]]
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."cart_id" = ?[0m  [["cart_id", 6]]
+  [1m[35mItem Load (0.3ms)[0m  SELECT "items".* FROM "items" WHERE "items"."cart_id" = ?  [["cart_id", 7]]
+  Rendered users/show.html.erb within layouts/application (13.3ms)
+Completed 200 OK in 64ms (Views: 56.3ms | ActiveRecord: 1.5ms)
+
+
+Started POST "/update_item/10" for 67.186.116.218 at 2017-11-25 04:24:59 +0000
+Processing by ItemsController#update as HTML
+  Parameters: {"authenticity_token"=>"aP3qzjooQXQbUCR5FuyYkTLwQOMkjlYSftL+czgM5vKBi4CLTycGFw7qaf2ZukZQkPebKllc8GzTNOMBNj6oig==", "item_name"=>"Fresh Foam Cruz - Men's  - Running, Cushioning - New Balance", "description"=>"1", "quantity_wanted"=>"1", "quantity_received"=>"0", "item_url"=>"http://www.newbalance.com/pd/fresh-foam-cruz/MCRUZ-O.html?dwvar_MCRUZ-O_color=Phantom#color=Phantom&size=12", "vendor_id"=>"0", "image_url"=>"coming soon", "cart_id"=>"5", "gotit"=>"false", "id"=>"10"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 4]]
+  [1m[35mItem Load (0.2ms)[0m  SELECT  "items".* FROM "items" WHERE "items"."id" = ? LIMIT 1  [["id", 10]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  UPDATE "items" SET "gotit" = ?, "updated_at" = ? WHERE "items"."id" = ?  [["gotit", "f"], ["updated_at", "2017-11-25 04:24:59.631501"], ["id", 10]]
+  [1m[36m (14.6ms)[0m  [1mcommit transaction[0m
+Redirected to https://carts-from-scratch-v1-jpalumb0.c9users.io/users/4
+Completed 302 Found in 38ms (ActiveRecord: 15.6ms)
+
+
+Started GET "/users/4" for 67.186.116.218 at 2017-11-25 04:24:59 +0000
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 4]]
+  [1m[36mUser Load (1.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35mCart Load (0.2ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."user_id" = ?  [["user_id", 4]]
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."cart_id" = ?[0m  [["cart_id", 5]]
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."cart_id" = ?  [["cart_id", 6]]
+  [1m[36mItem Load (0.1ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."cart_id" = ?[0m  [["cart_id", 7]]
+  Rendered users/show.html.erb within layouts/application (13.5ms)
+Completed 200 OK in 103ms (Views: 79.9ms | ActiveRecord: 2.0ms)
+
+
+Started POST "/update_item/10" for 67.186.116.218 at 2017-11-25 04:25:02 +0000
+Processing by ItemsController#update as HTML
+  Parameters: {"authenticity_token"=>"2XLCFf4MhAtG4GYk/HByWu9wSqkojMgPUHK/kcZRhdkwBKhQiwPDaFNaK6BzJqybTXeRYFVebnH9lKLjyGPLoQ==", "item_name"=>"Fresh Foam Cruz - Men's  - Running, Cushioning - New Balance", "description"=>"1", "quantity_wanted"=>"1", "quantity_received"=>"0", "item_url"=>"http://www.newbalance.com/pd/fresh-foam-cruz/MCRUZ-O.html?dwvar_MCRUZ-O_color=Phantom#color=Phantom&size=12", "vendor_id"=>"0", "image_url"=>"coming soon", "cart_id"=>"5", "gotit"=>"true", "id"=>"10"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 4]]
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT  "items".* FROM "items" WHERE "items"."id" = ? LIMIT 1[0m  [["id", 10]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "items" SET "gotit" = ?, "updated_at" = ? WHERE "items"."id" = ?[0m  [["gotit", "t"], ["updated_at", "2017-11-25 04:25:02.477349"], ["id", 10]]
+  [1m[35m (17.3ms)[0m  commit transaction
+Redirected to https://carts-from-scratch-v1-jpalumb0.c9users.io/users/4
+Completed 302 Found in 40ms (ActiveRecord: 18.3ms)
+
+
+Started GET "/users/4" for 67.186.116.218 at 2017-11-25 04:25:02 +0000
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 4]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mCart Load (0.2ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."user_id" = ?[0m  [["user_id", 4]]
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."cart_id" = ?  [["cart_id", 5]]
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."cart_id" = ?[0m  [["cart_id", 6]]
+  [1m[35mItem Load (0.1ms)[0m  SELECT "items".* FROM "items" WHERE "items"."cart_id" = ?  [["cart_id", 7]]
+  Rendered users/show.html.erb within layouts/application (28.8ms)
+Completed 200 OK in 71ms (Views: 61.9ms | ActiveRecord: 1.1ms)
+
+
+Started POST "/update_item/10" for 67.186.116.218 at 2017-11-25 04:25:11 +0000
+Processing by ItemsController#update as HTML
+  Parameters: {"authenticity_token"=>"m4KqioAb4pKKso5LlLgQXRZX9GbbjBTXvmOS1u7yI2py9MDP9RSl8Z8Iw88b7s6ctFAvr6ZesqkThY+k4MBtEg==", "item_name"=>"Fresh Foam Cruz - Men's  - Running, Cushioning - New Balance", "description"=>"1", "quantity_wanted"=>"1", "quantity_received"=>"0", "item_url"=>"http://www.newbalance.com/pd/fresh-foam-cruz/MCRUZ-O.html?dwvar_MCRUZ-O_color=Phantom#color=Phantom&size=12", "vendor_id"=>"0", "image_url"=>"coming soon", "cart_id"=>"5", "gotit"=>"false", "id"=>"10"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 4]]
+  [1m[35mItem Load (0.1ms)[0m  SELECT  "items".* FROM "items" WHERE "items"."id" = ? LIMIT 1  [["id", 10]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "items" SET "gotit" = ?, "updated_at" = ? WHERE "items"."id" = ?  [["gotit", "f"], ["updated_at", "2017-11-25 04:25:11.207286"], ["id", 10]]
+  [1m[36m (14.5ms)[0m  [1mcommit transaction[0m
+Redirected to https://carts-from-scratch-v1-jpalumb0.c9users.io/users/4
+Completed 302 Found in 25ms (ActiveRecord: 15.2ms)
+
+
+Started GET "/users/4" for 67.186.116.218 at 2017-11-25 04:25:11 +0000
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 4]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35mCart Load (0.1ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."user_id" = ?  [["user_id", 4]]
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."cart_id" = ?[0m  [["cart_id", 5]]
+  [1m[35mItem Load (0.1ms)[0m  SELECT "items".* FROM "items" WHERE "items"."cart_id" = ?  [["cart_id", 6]]
+  [1m[36mItem Load (0.1ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."cart_id" = ?[0m  [["cart_id", 7]]
+  Rendered users/show.html.erb within layouts/application (8.1ms)
+Completed 200 OK in 48ms (Views: 43.7ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/follows" for 67.186.116.218 at 2017-11-25 04:25:17 +0000
+Processing by FollowsController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 4]]
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users"
+  [1m[36mFollow Load (0.3ms)[0m  [1mSELECT "follows".* FROM "follows" WHERE "follows"."follower_id" = ?[0m  [["follower_id", 4]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 3]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 3]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 3]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered follows/index.html.erb within layouts/application (34.8ms)
+Completed 200 OK in 102ms (Views: 88.0ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/users/1" for 67.186.116.218 at 2017-11-25 04:25:20 +0000
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 4]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mCart Load (0.2ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."user_id" = ?  [["user_id", 1]]
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."cart_id" = ?[0m  [["cart_id", 1]]
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."cart_id" = ?  [["cart_id", 2]]
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."cart_id" = ?[0m  [["cart_id", 3]]
+  Rendered users/show.html.erb within layouts/application (13.0ms)
+Completed 200 OK in 52ms (Views: 45.5ms | ActiveRecord: 1.3ms)
+
+
+Started POST "/update_item/5" for 67.186.116.218 at 2017-11-25 04:25:35 +0000
+Processing by ItemsController#update as HTML
+  Parameters: {"authenticity_token"=>"Ha2NP0b7V9Kqz3zH+zaRyAZiDl4u82GEhviSZdU9p/j02+d6M/QQsb91MUN0YE8JpGXVl1Mhx/orHo8X2w/pgA==", "item_name"=>"Nike React Hyperdunk 2017 Flyknit Basketball Shoe. Nike.com", "description"=>"1", "quantity_wanted"=>"1", "quantity_received"=>"0", "item_url"=>"https://store.nike.com/us/en_us/pd/react-hyperdunk-2017-flyknit-basketball-shoe/pid-11598226/pgid-12086676#", "vendor_id"=>"0", "image_url"=>"coming soon", "cart_id"=>"1", "gotit"=>"true", "id"=>"5"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 4]]
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT  "items".* FROM "items" WHERE "items"."id" = ? LIMIT 1[0m  [["id", 5]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mUPDATE "items" SET "gotit" = ?, "updated_at" = ? WHERE "items"."id" = ?[0m  [["gotit", "t"], ["updated_at", "2017-11-25 04:25:35.124407"], ["id", 5]]
+  [1m[35m (12.8ms)[0m  commit transaction
+Redirected to https://carts-from-scratch-v1-jpalumb0.c9users.io/users/1
+Completed 302 Found in 25ms (ActiveRecord: 13.7ms)
+
+
+Started GET "/users/1" for 67.186.116.218 at 2017-11-25 04:25:35 +0000
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 4]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mCart Load (0.1ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."cart_id" = ?  [["cart_id", 1]]
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."cart_id" = ?[0m  [["cart_id", 2]]
+  [1m[35mItem Load (0.1ms)[0m  SELECT "items".* FROM "items" WHERE "items"."cart_id" = ?  [["cart_id", 3]]
+  Rendered users/show.html.erb within layouts/application (9.0ms)
+Completed 200 OK in 46ms (Views: 40.7ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/update_item/5" for 67.186.116.218 at 2017-11-25 04:25:41 +0000
+Processing by ItemsController#update as HTML
+  Parameters: {"authenticity_token"=>"uHwsr/rAMdhiBy1UL/sARt+mXoaOXkWqwOayVZCe2ElRCkbqj892u3e9YNCgrd6HfaGFT/OM49RtAK8nnqyWMQ==", "item_name"=>"Nike React Hyperdunk 2017 Flyknit Basketball Shoe. Nike.com", "description"=>"1", "quantity_wanted"=>"1", "quantity_received"=>"0", "item_url"=>"https://store.nike.com/us/en_us/pd/react-hyperdunk-2017-flyknit-basketball-shoe/pid-11598226/pgid-12086676#", "vendor_id"=>"0", "image_url"=>"coming soon", "cart_id"=>"1", "gotit"=>"false", "id"=>"5"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 4]]
+  [1m[35mItem Load (0.2ms)[0m  SELECT  "items".* FROM "items" WHERE "items"."id" = ? LIMIT 1  [["id", 5]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE "items" SET "gotit" = ?, "updated_at" = ? WHERE "items"."id" = ?  [["gotit", "f"], ["updated_at", "2017-11-25 04:25:41.680382"], ["id", 5]]
+  [1m[36m (16.1ms)[0m  [1mcommit transaction[0m
+Redirected to https://carts-from-scratch-v1-jpalumb0.c9users.io/users/1
+Completed 302 Found in 29ms (ActiveRecord: 17.0ms)
+
+
+Started GET "/users/1" for 67.186.116.218 at 2017-11-25 04:25:41 +0000
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 4]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mCart Load (0.2ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."user_id" = ?  [["user_id", 1]]
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."cart_id" = ?[0m  [["cart_id", 1]]
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."cart_id" = ?  [["cart_id", 2]]
+  [1m[36mItem Load (0.1ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."cart_id" = ?[0m  [["cart_id", 3]]
+  Rendered users/show.html.erb within layouts/application (9.8ms)
+Completed 200 OK in 136ms (Views: 42.1ms | ActiveRecord: 1.0ms)
+
+
+Started DELETE "/users/sign_out" for 67.186.116.218 at 2017-11-25 04:38:01 +0000
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"6ivESgcCwtoVbXMS6R/3qs3kUVYxuqR6D0HmMeiccBoDXa4Pcg2FuQDXPpZmSSlrb+OKn0xoAgSip/tD5q4+Yg=="}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 4]]
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  commit transaction
+Redirected to https://carts-from-scratch-v1-jpalumb0.c9users.io/
+Completed 302 Found in 45ms (ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 67.186.116.218 at 2017-11-25 04:38:01 +0000
+Processing by UsersController#current_user_home as HTML
+Completed 401 Unauthorized in 5ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 67.186.116.218 at 2017-11-25 04:38:01 +0000
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (31.4ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (97.4ms)
+Completed 200 OK in 153ms (Views: 149.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 67.186.116.218 at 2017-11-25 04:38:04 +0000
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Ez/ubEenyQ7xS2CDAy/nOoDIrFECjpKf8H0q4Nc43/QRTc8rcNyTBnKSClKH5ykHphFq67Oxa4M6oNMHpoKYZg==", "user"=>{"email"=>"josephppalumbo@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (3.6ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."email" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["email", "josephppalumbo@gmail.com"]]
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = ?, "current_sign_in_at" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["last_sign_in_at", "2017-11-24 05:55:03.337941"], ["current_sign_in_at", "2017-11-25 04:38:04.521963"], ["sign_in_count", 6], ["updated_at", "2017-11-25 04:38:04.524224"], ["id", 4]]
+  [1m[35m (15.8ms)[0m  commit transaction
+Redirected to https://carts-from-scratch-v1-jpalumb0.c9users.io/
+Completed 302 Found in 209ms (ActiveRecord: 20.0ms)
+
+
+Started GET "/" for 67.186.116.218 at 2017-11-25 04:38:04 +0000
+Processing by UsersController#current_user_home as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 4]]
+Redirected to https://carts-from-scratch-v1-jpalumb0.c9users.io/users/4
+Completed 302 Found in 4ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/users/4" for 67.186.116.218 at 2017-11-25 04:38:04 +0000
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 4]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35mCart Load (0.2ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."user_id" = ?  [["user_id", 4]]
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."cart_id" = ?[0m  [["cart_id", 5]]
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."cart_id" = ?  [["cart_id", 6]]
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."cart_id" = ?[0m  [["cart_id", 7]]
+  Rendered users/show.html.erb within layouts/application (12.1ms)
+Completed 200 OK in 61ms (Views: 55.2ms | ActiveRecord: 1.3ms)
+
+
+Started POST "/update_item/8" for 67.186.116.218 at 2017-11-25 04:38:07 +0000
+Processing by ItemsController#update as HTML
+  Parameters: {"authenticity_token"=>"cyuiFny2LNVoZ+6l0HS/vxzPCnJXcKys6rfpM+sWrMqWy1bCjT9GiGrthwn9zaCn53N4NG3SwE/KL2fbGGAxkA==", "item_name"=>"Cypher Run - Men's  - Running,  - New Balance choo choo", "description"=>"1", "quantity_wanted"=>"1", "quantity_received"=>"0", "item_url"=>"https://www.newbalance.com/pd/cypher-run/MSRMC.html", "vendor_id"=>"0", "image_url"=>"coming soon", "cart_id"=>"5", "gotit"=>"true", "id"=>"8"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 4]]
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT  "items".* FROM "items" WHERE "items"."id" = ? LIMIT 1[0m  [["id", 8]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mUPDATE "items" SET "gotit" = ?, "updated_at" = ? WHERE "items"."id" = ?[0m  [["gotit", "t"], ["updated_at", "2017-11-25 04:38:07.732223"], ["id", 8]]
+  [1m[35m (16.4ms)[0m  commit transaction
+Redirected to https://carts-from-scratch-v1-jpalumb0.c9users.io/users/4
+Completed 302 Found in 44ms (ActiveRecord: 17.3ms)
+
+
+Started GET "/users/4" for 67.186.116.218 at 2017-11-25 04:38:07 +0000
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 4]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mCart Load (0.2ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."user_id" = ?[0m  [["user_id", 4]]
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."cart_id" = ?  [["cart_id", 5]]
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."cart_id" = ?[0m  [["cart_id", 6]]
+  [1m[35mItem Load (0.1ms)[0m  SELECT "items".* FROM "items" WHERE "items"."cart_id" = ?  [["cart_id", 7]]
+  Rendered users/show.html.erb within layouts/application (10.2ms)
+Completed 200 OK in 48ms (Views: 42.8ms | ActiveRecord: 1.1ms)
+
+
+Started POST "/update_item/8" for 67.186.116.218 at 2017-11-25 04:38:09 +0000
+Processing by ItemsController#update as HTML
+  Parameters: {"authenticity_token"=>"FC0RlbNYKe2a+q+6gzc5No6tIGmVWDq0Pko3yBru6pvxzeVBQtFDsJhwxhaujiYudRFSL6/6Vlce0rkg6Zh3wQ==", "item_name"=>"Cypher Run - Men's  - Running,  - New Balance choo choo", "description"=>"1", "quantity_wanted"=>"1", "quantity_received"=>"0", "item_url"=>"https://www.newbalance.com/pd/cypher-run/MSRMC.html", "vendor_id"=>"0", "image_url"=>"coming soon", "cart_id"=>"5", "gotit"=>"false", "id"=>"8"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 4]]
+  [1m[35mItem Load (0.2ms)[0m  SELECT  "items".* FROM "items" WHERE "items"."id" = ? LIMIT 1  [["id", 8]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE "items" SET "gotit" = ?, "updated_at" = ? WHERE "items"."id" = ?  [["gotit", "f"], ["updated_at", "2017-11-25 04:38:09.545207"], ["id", 8]]
+  [1m[36m (18.9ms)[0m  [1mcommit transaction[0m
+Redirected to https://carts-from-scratch-v1-jpalumb0.c9users.io/users/4
+Completed 302 Found in 31ms (ActiveRecord: 19.7ms)
+
+
+Started GET "/users/4" for 67.186.116.218 at 2017-11-25 04:38:09 +0000
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 4]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35mCart Load (0.2ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."user_id" = ?  [["user_id", 4]]
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."cart_id" = ?[0m  [["cart_id", 5]]
+  [1m[35mItem Load (0.3ms)[0m  SELECT "items".* FROM "items" WHERE "items"."cart_id" = ?  [["cart_id", 6]]
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."cart_id" = ?[0m  [["cart_id", 7]]
+  Rendered users/show.html.erb within layouts/application (11.5ms)
+Completed 200 OK in 62ms (Views: 55.7ms | ActiveRecord: 1.4ms)
