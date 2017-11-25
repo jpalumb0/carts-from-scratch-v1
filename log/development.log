@@ -18497,3 +18497,94 @@ Processing by UsersController#show as HTML
   [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."cart_id" = ?[0m  [["cart_id", 3]]
   Rendered users/show.html.erb within layouts/application (12.7ms)
 Completed 200 OK in 59ms (Views: 52.6ms | ActiveRecord: 1.3ms)
+
+
+Started DELETE "/users/sign_out" for 67.186.116.218 at 2017-11-24 07:27:43 +0000
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"P4J4r2sIa35Pdah3mO5tdtLEyQ3dhexOw8b01BOt5dVP/hbw3xWTjt6JhbUXa+r+DDlqZFr/uWXfrTz8nUT4OQ=="}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 4]]
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+Redirected to https://carts-from-scratch-v1-jpalumb0.c9users.io/
+Completed 302 Found in 27ms (ActiveRecord: 1.2ms)
+
+
+Started GET "/" for 67.186.116.218 at 2017-11-24 07:27:44 +0000
+Processing by UsersController#current_user_home as HTML
+Completed 401 Unauthorized in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 67.186.116.218 at 2017-11-24 07:27:44 +0000
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (11.5ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (21.3ms)
+Completed 200 OK in 72ms (Views: 69.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for 67.186.116.218 at 2017-11-24 07:27:44 +0000
+
+
+Started GET "/" for 67.186.116.218 at 2017-11-25 04:17:26 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by UsersController#current_user_home as HTML
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 4]]
+Redirected to https://carts-from-scratch-v1-jpalumb0.c9users.io/users/4
+Completed 302 Found in 128ms (ActiveRecord: 1.3ms)
+
+
+Started GET "/users/4" for 67.186.116.218 at 2017-11-25 04:17:26 +0000
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 4]]
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mCart Load (0.4ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."user_id" = ?[0m  [["user_id", 4]]
+  [1m[35mItem Load (0.3ms)[0m  SELECT "items".* FROM "items" WHERE "items"."cart_id" = ?  [["cart_id", 5]]
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."cart_id" = ?[0m  [["cart_id", 6]]
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."cart_id" = ?  [["cart_id", 7]]
+  Rendered users/show.html.erb within layouts/application (112.1ms)
+Completed 200 OK in 467ms (Views: 451.7ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for 67.186.116.218 at 2017-11-25 04:17:27 +0000
+
+
+Started GET "/assets/bootstrap-4-spacers.self-8e142eca032d79e26ee5be381893404f1f2acdb8215ea7e64d3b64a88b073523.css?body=1" for 67.186.116.218 at 2017-11-25 04:17:27 +0000
+
+
+Started GET "/assets/jquery-ui/version.self-c8e3d1203da26ea7efdf83c1eabb3f0ba55cb68e463f5ccf0d77bd15ce6a8e61.js?body=1" for 67.186.116.218 at 2017-11-25 04:17:27 +0000
+
+
+Started GET "/assets/turbolinks.self-1d1fddf91adc38ac2045c51f0a3e05ca97d07d24d15a4dcbf705009106489e69.js?body=1" for 67.186.116.218 at 2017-11-25 04:17:27 +0000
+
+
+Started GET "/assets/jquery_ujs.self-784a997f6726036b1993eb2217c9cb558e1cbb801c6da88105588c56f13b466a.js?body=1" for 67.186.116.218 at 2017-11-25 04:17:27 +0000
+
+
+Started GET "/assets/jquery.self-bd7ddd393353a8d2480a622e80342adf488fb6006d667e8b42e4c0073393abee.js?body=1" for 67.186.116.218 at 2017-11-25 04:17:27 +0000
+
+
+Started GET "/assets/jquery-ui/keycode.self-ad63cd20acf49dd333bbbc537454d7d475bd610eb5b88de0dca009f0c3d314b1.js?body=1" for 67.186.116.218 at 2017-11-25 04:17:27 +0000
+
+
+Started GET "/assets/jquery-ui/position.self-1b49c8c521e67a4a88bfdad6b4d944d33686d25009a0e40a1e170acdd7b6962a.js?body=1" for 67.186.116.218 at 2017-11-25 04:17:27 +0000
+
+
+Started GET "/assets/jquery-ui/safe-active-element.self-a1f1a1a7dae3269ce03f6fffb2dcc9b4a7490f5d546c65d54417bec3be24b668.js?body=1" for 67.186.116.218 at 2017-11-25 04:17:27 +0000
+
+
+Started GET "/assets/jquery-ui/unique-id.self-66e85ac85cd0b6b8b1bb89369fc65f608f716869dc0930862a8d421a57a9580a.js?body=1" for 67.186.116.218 at 2017-11-25 04:17:27 +0000
+
+
+Started GET "/assets/jquery-ui/widget.self-fca20bcec06d192f97cffa6e734e24360e227237b8ae7d7e7e60754df7d5444f.js?body=1" for 67.186.116.218 at 2017-11-25 04:17:27 +0000
+
+
+Started GET "/assets/jquery-ui/widgets/menu.self-0730fe713007bd93e6db569352a20ed92448299505ff6f525bc0dc6dd488254e.js?body=1" for 67.186.116.218 at 2017-11-25 04:17:27 +0000
+
+
+Started GET "/assets/jquery-ui/widgets/autocomplete.self-6a89d7a43741ec810ef95de143a7c0297e2e4368ebecff64493ebb7a9ac3a524.js?body=1" for 67.186.116.218 at 2017-11-25 04:17:27 +0000
+
+
+Started GET "/assets/autocomplete-rails.self-7b9f3d470095312074f7dba7e53e16482b6ac8c4c5fe8dd368f321fd8324245c.js?body=1" for 67.186.116.218 at 2017-11-25 04:17:27 +0000
+
+
+Started GET "/assets/application.self-a1a74291c4c48f2f663a025ffa678498d6448b849a2d74c0ca25e39ee192c0a7.js?body=1" for 67.186.116.218 at 2017-11-25 04:17:27 +0000
