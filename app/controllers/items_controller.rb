@@ -88,7 +88,7 @@ class ItemsController < ApplicationController
     save_status = @item.save
 
     if save_status == true
-      redirect_to(:back, :notice => "Item updated successfully.")
+      redirect_to("/users/#{current_user.id}", :notice => "Item updated successfully.")
     else
       render("items/edit.html.erb")
     end

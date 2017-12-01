@@ -20045,3 +20045,142 @@ Processing by UsersController#show as HTML
   [1m[36mItem Load (0.6ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."cart_id" = ?[0m  [["cart_id", 7]]
   Rendered users/show.html.erb within layouts/application (29.8ms)
 Completed 200 OK in 144ms (Views: 122.4ms | ActiveRecord: 7.6ms)
+
+
+Started GET "/items/18/edit" for 67.186.116.218 at 2017-12-01 18:14:48 +0000
+Processing by ItemsController#edit as HTML
+  Parameters: {"id"=>"18"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 4]]
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT  "items".* FROM "items" WHERE "items"."id" = ? LIMIT 1[0m  [["id", 18]]
+  Rendered items/edit.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 49ms (Views: 42.7ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/update_item/18" for 67.186.116.218 at 2017-12-01 18:14:52 +0000
+Processing by ItemsController#update as HTML
+  Parameters: {"authenticity_token"=>"LKtACGhh4KG0MU4uNwre+0kHvWfERibrYMELc4jXqXw55D8t0h6rhwCZXyOHK3AlWni+uvWVaRzdOmVL0w2Dqw==", "item_name"=>"1", "description"=>"test", "quantity_wanted"=>"1", "quantity_received"=>"0", "item_url"=>"http://www.colehaan.com/mens-2.zerogrand-chukka-british-tan-leather-ivory/C27804.html?dwvar_C27804_color=British%2520Tan%2520Leather-ivory&dwvar_C27804_width=#cgid=mens_shoes_boots&start=29", "vendor_id"=>"5", "image_url"=>"5", "cart_id"=>"5", "id"=>"18"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 4]]
+  [1m[36mItem Load (0.1ms)[0m  [1mSELECT  "items".* FROM "items" WHERE "items"."id" = ? LIMIT 1[0m  [["id", 18]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (1.2ms)[0m  [1mUPDATE "items" SET "description" = ?, "gotit" = ?, "updated_at" = ? WHERE "items"."id" = ?[0m  [["description", "test"], ["gotit", nil], ["updated_at", "2017-12-01 18:14:52.729825"], ["id", 18]]
+  [1m[35m (0.1ms)[0m  rollback transaction
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 1.7ms)
+
+ActiveRecord::StatementInvalid (SQLite3::ConstraintException: NOT NULL constraint failed: items.gotit: UPDATE "items" SET "description" = ?, "gotit" = ?, "updated_at" = ? WHERE "items"."id" = ?):
+  app/controllers/items_controller.rb:88:in `update'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.3.4/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (7.0ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.4/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.9ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.4/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.9ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.4/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (43.2ms)
+
+
+Started POST "/update_item/18" for 67.186.116.218 at 2017-12-01 18:17:49 +0000
+Processing by ItemsController#update as HTML
+  Parameters: {"authenticity_token"=>"hJH1+dR0oGMYgHevAw2Nni596/L0PKBHtfHnb0EWy0qR3orcbgvrRawoZqKzLCNAPQLoL8Xv77AIColXGszhnQ==", "item_name"=>"1", "description"=>"test test", "quantity_wanted"=>"1", "quantity_received"=>"0", "item_url"=>"http://www.colehaan.com/mens-2.zerogrand-chukka-british-tan-leather-ivory/C27804.html?dwvar_C27804_color=British%2520Tan%2520Leather-ivory&dwvar_C27804_width=#cgid=mens_shoes_boots&start=29", "vendor_id"=>"5", "image_url"=>"5", "cart_id"=>"5", "id"=>"18"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 4]]
+  [1m[35mItem Load (0.1ms)[0m  SELECT  "items".* FROM "items" WHERE "items"."id" = ? LIMIT 1  [["id", 18]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (2.8ms)[0m  UPDATE "items" SET "description" = ?, "gotit" = ?, "updated_at" = ? WHERE "items"."id" = ?  [["description", "test test"], ["gotit", nil], ["updated_at", "2017-12-01 18:17:49.045220"], ["id", 18]]
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+Completed 500 Internal Server Error in 17ms (ActiveRecord: 3.4ms)
+
+ActiveRecord::StatementInvalid (SQLite3::ConstraintException: NOT NULL constraint failed: items.gotit: UPDATE "items" SET "description" = ?, "gotit" = ?, "updated_at" = ? WHERE "items"."id" = ?):
+  app/controllers/items_controller.rb:88:in `update'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.3.4/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (8.7ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.4/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (12.5ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.4/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.7ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.4/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (44.1ms)
+
+
+Started GET "/items/18/edit" for 67.186.116.218 at 2017-12-01 18:18:58 +0000
+Processing by ItemsController#edit as HTML
+  Parameters: {"id"=>"18"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 4]]
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT  "items".* FROM "items" WHERE "items"."id" = ? LIMIT 1[0m  [["id", 18]]
+  Rendered items/edit.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 142ms (Views: 134.3ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/update_item/18" for 67.186.116.218 at 2017-12-01 18:19:03 +0000
+Processing by ItemsController#update as HTML
+  Parameters: {"authenticity_token"=>"wNIBU/NQXMfNKD6kwLpJIj3x9tTcFJVxk50LCyFHPcLVnX52SS8X4XmAL6lwm+f8Lo71Ce3H2oYuZmUzep0XFQ==", "item_name"=>"1", "description"=>"test test", "quantity_wanted"=>"1", "quantity_received"=>"0", "item_url"=>"http://www.colehaan.com/mens-2.zerogrand-chukka-british-tan-leather-ivory/C27804.html?dwvar_C27804_color=British%2520Tan%2520Leather-ivory&dwvar_C27804_width=#cgid=mens_shoes_boots&start=29", "vendor_id"=>"5", "image_url"=>"5", "cart_id"=>"5", "gotit"=>"false", "id"=>"18"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 4]]
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT  "items".* FROM "items" WHERE "items"."id" = ? LIMIT 1[0m  [["id", 18]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mUPDATE "items" SET "description" = ?, "updated_at" = ? WHERE "items"."id" = ?[0m  [["description", "test test"], ["updated_at", "2017-12-01 18:19:03.314867"], ["id", 18]]
+  [1m[35m (16.7ms)[0m  commit transaction
+Redirected to https://carts-from-scratch-v1-jpalumb0.c9users.io/items/18/edit
+Completed 302 Found in 30ms (ActiveRecord: 17.7ms)
+
+
+Started GET "/items/18/edit" for 67.186.116.218 at 2017-12-01 18:19:03 +0000
+Processing by ItemsController#edit as HTML
+  Parameters: {"id"=>"18"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 4]]
+  [1m[35mItem Load (0.2ms)[0m  SELECT  "items".* FROM "items" WHERE "items"."id" = ? LIMIT 1  [["id", 18]]
+  Rendered items/edit.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 50ms (Views: 44.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/4" for 67.186.116.218 at 2017-12-01 18:20:03 +0000
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 4]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mCart Load (0.2ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."user_id" = ?[0m  [["user_id", 4]]
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."cart_id" = ?  [["cart_id", 5]]
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."cart_id" = ?[0m  [["cart_id", 6]]
+  [1m[35mItem Load (0.1ms)[0m  SELECT "items".* FROM "items" WHERE "items"."cart_id" = ?  [["cart_id", 7]]
+  Rendered users/show.html.erb within layouts/application (9.3ms)
+Completed 200 OK in 45ms (Views: 40.3ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/users/4" for 67.186.116.218 at 2017-12-01 18:27:43 +0000
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 4]]
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mCart Load (0.3ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."user_id" = ?[0m  [["user_id", 4]]
+  [1m[35mItem Load (0.3ms)[0m  SELECT "items".* FROM "items" WHERE "items"."cart_id" = ?  [["cart_id", 5]]
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."cart_id" = ?[0m  [["cart_id", 6]]
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."cart_id" = ?  [["cart_id", 7]]
+  Rendered users/show.html.erb within layouts/application (58.2ms)
+Completed 200 OK in 128ms (Views: 100.9ms | ActiveRecord: 3.7ms)
+
+
+Started GET "/items/18/edit" for 67.186.116.218 at 2017-12-01 18:27:45 +0000
+Processing by ItemsController#edit as HTML
+  Parameters: {"id"=>"18"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 4]]
+  [1m[35mItem Load (0.3ms)[0m  SELECT  "items".* FROM "items" WHERE "items"."id" = ? LIMIT 1  [["id", 18]]
+  Rendered items/edit.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 45ms (Views: 39.1ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/update_item/18" for 67.186.116.218 at 2017-12-01 18:27:51 +0000
+Processing by ItemsController#update as HTML
+  Parameters: {"authenticity_token"=>"oqNJ+ZnpIHZQNQiINekit+NMxSIf/eSxCdQpseyBPPm37DbcI5ZrUOSdGYWFyIxp8DPG/y4uq0a0L0eJt1sWLg==", "item_name"=>"1", "description"=>"test test thrice", "quantity_wanted"=>"1", "quantity_received"=>"0", "item_url"=>"http://www.colehaan.com/mens-2.zerogrand-chukka-british-tan-leather-ivory/C27804.html?dwvar_C27804_color=British%2520Tan%2520Leather-ivory&dwvar_C27804_width=#cgid=mens_shoes_boots&start=29", "vendor_id"=>"5", "image_url"=>"5", "cart_id"=>"5", "gotit"=>"false", "id"=>"18"}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 4]]
+  [1m[35mItem Load (0.2ms)[0m  SELECT  "items".* FROM "items" WHERE "items"."id" = ? LIMIT 1  [["id", 18]]
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  UPDATE "items" SET "description" = ?, "updated_at" = ? WHERE "items"."id" = ?  [["description", "test test thrice"], ["updated_at", "2017-12-01 18:27:51.247267"], ["id", 18]]
+  [1m[36m (15.3ms)[0m  [1mcommit transaction[0m
+Redirected to https://carts-from-scratch-v1-jpalumb0.c9users.io/users/4
+Completed 302 Found in 30ms (ActiveRecord: 16.7ms)
+
+
+Started GET "/users/4" for 67.186.116.218 at 2017-12-01 18:27:51 +0000
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 4]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35mCart Load (0.2ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."user_id" = ?  [["user_id", 4]]
+  [1m[36mItem Load (0.3ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."cart_id" = ?[0m  [["cart_id", 5]]
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."cart_id" = ?  [["cart_id", 6]]
+  [1m[36mItem Load (0.1ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."cart_id" = ?[0m  [["cart_id", 7]]
+  Rendered users/show.html.erb within layouts/application (10.9ms)
+Completed 200 OK in 58ms (Views: 52.5ms | ActiveRecord: 1.2ms)
