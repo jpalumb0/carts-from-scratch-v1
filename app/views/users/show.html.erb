@@ -33,7 +33,7 @@
                           <tr>
                             <th>Got it?</th>
                             <th>Quantity wanted</th>
-                            <th>Item name</th>
+                            <!-- <th>Item name</th> -->
                             
                             <th>Item url</th>
                             <th>Notes</th>
@@ -111,9 +111,12 @@
                                             </button>
                                             
                                            <td>0</td>
-                                            <td><%= item.item_name %><!--default blank for now due to incompatibility with some sites</td> -->
+                                            <!--<td><%= item.item_name %>--><!--default blank for now due to incompatibility with some sites</td> -->
                                             
-                                            <td style="text-overflow:ellipsis"><%= item.item_url %></td>
+                                            <td >
+                                              <div style="text-overflow:ellipsis; overflow:hidden;">
+                                                <%= item.item_url %>
+                                              </div></td>
                                             <td><%= item.description %></td>
                                             <td><%= item.image_url %></td>
                                            
@@ -132,9 +135,13 @@
                                           </button>
                                           
                                           <td><%= item.quantity_wanted %></td>
-                                            <td><a href=<%= item.item_url %>><%= item.item_name %></a></td><!--default blank for now due to incompatibility with some sites</td> -->
+                                            <!--<td><a href=<%= item.item_url %>><%= item.item_name %></a></td>--><!--default blank for now due to incompatibility with some sites</td> -->
                                             
-                                            <td style="text-overflow:ellipsis"><a href=<%= item.item_url %>><%= item.item_url %></a></td>
+                                            <td >
+                                              <div  style="text-overflow:ellipsis; overflow:hidden;">
+                                                <a href=<%= item.item_url %>><%= item.item_url %></a>
+                                              </div>
+                                            </td>
                                             <td><%= item.description %></td>
                                             <td><%= item.image_url %></td>
                                            
@@ -216,9 +223,13 @@
                                           </button>
                                           
                                           <td>0</td>
-                                          <td><%= item.item_name %></td>
+                                          <!--<td><%= item.item_name %></td>-->
       
-                                          <td style="text-overflow:ellipsis"><%= item.item_url %></td>
+                                          <td style="text-overflow:ellipsis;">
+                                            <div style="text-overflow:ellipsis; overflow:hidden;">
+                                              <%= item.item_url %>
+                                            </div>
+                                          </td>
                                           <!--<td>na</td>
                                           <td>na</td>
                                   -->
@@ -232,9 +243,13 @@
                                           </button>
                                           
                                           <td><%= item.quantity_wanted %></td>
-                                          <td><a href=<%= item.item_url %>><%= item.item_name %></a></td>
-      
-                                          <td style="text-overflow:ellipsis"><a href=<%= item.item_url %>><%= item.item_url %></a></td>
+                                          <!--<td><a href=<%= item.item_url %>><%= item.item_name %></a></td>-->
+    
+                                          <td >
+                                            <div  style="text-overflow:ellipsis; overflow:hidden;">
+                                              <a href=<%= item.item_url %>><%= item.item_url %></a>
+                                            </div>
+                                          </td>
                                           <!--<td>na</td>
                                           <td>na</td>
                                   -->
