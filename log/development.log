@@ -19961,3 +19961,87 @@ Processing by UsersController#show as HTML
   [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."cart_id" = ?  [["cart_id", 7]]
   Rendered users/show.html.erb within layouts/application (19.7ms)
 Completed 200 OK in 85ms (Views: 74.7ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/users/4" for 67.186.116.218 at 2017-12-01 17:48:28 +0000
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 4]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mCart Load (0.4ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."user_id" = ?[0m  [["user_id", 4]]
+  [1m[35mItem Load (0.4ms)[0m  SELECT "items".* FROM "items" WHERE "items"."cart_id" = ?  [["cart_id", 5]]
+  [1m[36mItem Load (0.4ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."cart_id" = ?[0m  [["cart_id", 6]]
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."cart_id" = ?  [["cart_id", 7]]
+  Rendered users/show.html.erb within layouts/application (122.2ms)
+Completed 200 OK in 193ms (Views: 184.6ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/items/new?cart_id=5" for 67.186.116.218 at 2017-12-01 17:50:21 +0000
+Processing by ItemsController#new as HTML
+  Parameters: {"cart_id"=>"5"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 4]]
+  Rendered items/new.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 69ms (Views: 64.6ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/create_item" for 67.186.116.218 at 2017-12-01 17:50:29 +0000
+Processing by ItemsController#create as HTML
+  Parameters: {"authenticity_token"=>"6UUYiqqxQ+J2Yye7DsawDxUufYTpp8fI6A1/R15z/4/8CmevEM4IxMLLNra+5x7RBlF+Wdh0iD9V9hF/BanVWA==", "item_url"=>"http://www.colehaan.com/mens-2.zerogrand-chukka-british-tan-leather-ivory/C27804.html?dwvar_C27804_color=British%20Tan%20Leather-ivory&dwvar_C27804_width=#cgid=mens_shoes_boots&start=29", "item_name"=>"", "quantity_wanted"=>"1", "quantity_received"=>"", "vendor_id"=>"", "image_url"=>"", "cart_id"=>"5", "gotit"=>"false"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 4]]
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "items" ("quantity_wanted", "description", "item_name", "item_url", "quantity_received", "cart_id", "image_url", "vendor_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["quantity_wanted", 1], ["description", "1"], ["item_name", "1"], ["item_url", "http://www.colehaan.com/mens-2.zerogrand-chukka-british-tan-leather-ivory/C27804.html?dwvar_C27804_color=British%2520Tan%2520Leather-ivory&dwvar_C27804_width=#cgid=mens_shoes_boots&start=29"], ["quantity_received", 0], ["cart_id", 5], ["image_url", "5"], ["vendor_id", 5], ["created_at", "2017-12-01 17:50:30.282573"], ["updated_at", "2017-12-01 17:50:30.282573"]]
+  [1m[36m (15.0ms)[0m  [1mcommit transaction[0m
+Redirected to https://carts-from-scratch-v1-jpalumb0.c9users.io/users/4
+Completed 302 Found in 664ms (ActiveRecord: 15.9ms)
+
+
+Started GET "/users/4" for 67.186.116.218 at 2017-12-01 17:50:30 +0000
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 4]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35mCart Load (0.2ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."user_id" = ?  [["user_id", 4]]
+  [1m[36mItem Load (0.4ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."cart_id" = ?[0m  [["cart_id", 5]]
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."cart_id" = ?  [["cart_id", 6]]
+  [1m[36mItem Load (0.3ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."cart_id" = ?[0m  [["cart_id", 7]]
+  Rendered users/show.html.erb within layouts/application (13.9ms)
+Completed 200 OK in 65ms (Views: 58.6ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/users/4" for 67.186.116.218 at 2017-12-01 18:04:47 +0000
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 4]]
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35mCart Load (0.3ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."user_id" = ?  [["user_id", 4]]
+  [1m[36mItem Load (0.4ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."cart_id" = ?[0m  [["cart_id", 5]]
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."cart_id" = ?  [["cart_id", 6]]
+  [1m[36mItem Load (0.3ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."cart_id" = ?[0m  [["cart_id", 7]]
+  Rendered users/show.html.erb within layouts/application (19.9ms)
+Completed 200 OK in 90ms (Views: 77.0ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/users/4" for 67.186.116.218 at 2017-12-01 18:08:27 +0000
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 4]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35mCart Load (0.2ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."user_id" = ?  [["user_id", 4]]
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."cart_id" = ?[0m  [["cart_id", 5]]
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."cart_id" = ?  [["cart_id", 6]]
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."cart_id" = ?[0m  [["cart_id", 7]]
+  Rendered users/show.html.erb within layouts/application (13.3ms)
+Completed 200 OK in 82ms (Views: 76.8ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/users/4" for 67.186.116.218 at 2017-12-01 18:08:32 +0000
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mUser Load (3.8ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 4]]
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35mCart Load (0.8ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."user_id" = ?  [["user_id", 4]]
+  [1m[36mItem Load (0.9ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."cart_id" = ?[0m  [["cart_id", 5]]
+  [1m[35mItem Load (0.7ms)[0m  SELECT "items".* FROM "items" WHERE "items"."cart_id" = ?  [["cart_id", 6]]
+  [1m[36mItem Load (0.6ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."cart_id" = ?[0m  [["cart_id", 7]]
+  Rendered users/show.html.erb within layouts/application (29.8ms)
+Completed 200 OK in 144ms (Views: 122.4ms | ActiveRecord: 7.6ms)
