@@ -60,6 +60,7 @@ end
 
 group :production do
   gem 'pg' #removed version number from tutorial due to age
+  gem 'rails_12factor'
 end
 
 gem 'devise', github: 'plataformatec/devise'

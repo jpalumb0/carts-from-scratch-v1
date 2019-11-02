@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+  
   def index
     @items = Item.all
 
@@ -54,6 +55,7 @@ class ItemsController < ApplicationController
     @item.vendor_id = #blank
     @item.image_url = #temporarily 'price' #coming soon" #blank for now #params[:image_url]
     @item.cart_id = params[:cart_id]
+    @item.gotit = params[:gotit]
 
     save_status = @item.save
 
@@ -81,6 +83,7 @@ class ItemsController < ApplicationController
     @item.vendor_id = params[:vendor_id]
     @item.image_url = params[:image_url]
     @item.cart_id = params[:cart_id]
+    @item.gotit = params[:gotit]
 
     save_status = @item.save
 
